@@ -23,6 +23,7 @@ c3 = Comment.create(author: 'Huego Bupkiss', content: 'I like the sound of my ow
 
 
 
+# u1.friendships.create(friend: u2)
 u1.friendships.create(friend_id: u2.id)
 u1.friendships.create(friend_id: u3.id)
 u3.friendships.create(friend_id: u1.id)
