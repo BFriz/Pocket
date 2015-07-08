@@ -30,6 +30,7 @@ gem 'devise'
 gem 'thin'
 gem 'bcrypt', '~> 3.1.0'
 
+
 group :development, :test do 
   gem 'byebug'
   gem 'pry-rails'
