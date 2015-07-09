@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all.order(:id)
+    articles = Article.all.order(:id)
 
-    render json:@articles
+    render json:articles
   end
 end

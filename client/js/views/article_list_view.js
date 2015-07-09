@@ -1,12 +1,13 @@
 PocketApp.Views.ArticleListView = Backbone.View.extend({
-  tagName: 'div',
+  el: '#article',
   events: {
-    "click button.remove": 'removeArticle',
-    'click button.edit': 'editArticle',
-    'click button.save': 'saveArticle'
+    'submit form#add': 'createArticle'
+    // "click button.remove": 'removeArticle',
+    // 'click button.edit': 'editArticle',
+    // 'click button.save': 'saveArticle'
   },
   initialize: function(){
-    this.template = _.template($('#tpl-article').html());
+    // this.template = _.template($('#tpl-article').html());
     this.collection.bind('add remove change', this.render, this);
     this.collection.fetch({
       success: function(collection, response, options) {
@@ -24,8 +25,8 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
     // this.$el.html(this.template(this.model.toJSON()));
     // return this;
     this.collection.each(function(article){
-      var articleView = new PocketApp.Views.ArticleListView({model: article})
-      article
+      var articleView = new PocketApp.Views.ArticleView({model: article})
+      articleList.append(articleView.render().el);
     })
   }
   // },
