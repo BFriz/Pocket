@@ -8,14 +8,20 @@
 
 User.delete_all
 Article.delete_all
+Comment.delete_all
 
 u1 = User.create(name: 'Ben', email: 'bfrisb@gmail.com')
 u2 = User.create(name: 'Laura', email: 'Laura@gmail.com')
 u3 = User.create(name: 'Mathilda', email: 'Mathilda@gmail.com')
 
-a1 = Article.create(title: 'Adventures of a teenage girl', author: 'Dr. B Frisby', category: 'Motivational')
-a2 = Article.create(title: 'Confessions of a Merkaat', author: 'Ce Moorebuts', category: 'Hip')
-a3 = Article.create(title: 'The Diary of the Jamican Ski Team', author: 'Dick Hertz', category: 'Uplifting')
+Article.create({title: 'The New York Stock Exchange has halted trading, blaming a "technical issue"', author: 'Quartz', category: 'Stock Exchange', url: "http://qz.com/448251/new-york-stock-exchange-halts-trading/"})
+Article.create({title: 'The rise and fall of Nokia, in one chart', author: 'Quartz', category: 'Blue Chip', url: "http://qz.com/430888/the-rise-and-fall-of-nokia-in-one-chart/"}) 
+Article.create({title: 'Barclays dumped its boss for not cutting costs far or fast enough', author: 'Quartz', category: 'Banking', url: "http://qz.com/447866/barclays-dumped-its-boss-for-not-cutting-costs-far-or-fast-enough/"}) 
+puts "#{Article.all.count} articles seeded!"""
+
+# a1 = Article.create(title: 'Adventures of a teenage girl', author: 'Dr. B Frisby', category: 'Motivational')
+# a2 = Article.create(title: 'Confessions of a Merkaat', author: 'Ce Moorebuts', category: 'Hip')
+# a3 = Article.create(title: 'The Diary of the Jamican Ski Team', author: 'Dick Hertz', category: 'Uplifting')
 
 c1 = Comment.create(author: 'Frank the Tank', content: ' This is really nice to figure out the associations')
 c2 = Comment.create(author: 'Hey Zues', content: 'Stupid idea made by stupid people.')
@@ -24,13 +30,13 @@ c3 = Comment.create(author: 'Huego Bupkiss', content: 'I like the sound of my ow
 
 
 # u1.friendships.create(friend: u2)
-u1.friendships.create(friend_id: u2.id)
-u1.friendships.create(friend_id: u3.id)
-u3.friendships.create(friend_id: u1.id)
+# u1.friendships.create(friend_id: u2.id)
+# u1.friendships.create(friend_id: u3.id)
+# u3.friendships.create(friend_id: u1.id)
 
-u1.user_articles.create(article_id: a1.id)
-u1.user_articles.create(article_id: a2.id)
-u1.user_articles.create(article_id: a3.id)
-u2.user_articles.create(article_id: a1.id)
-u2.user_articles.create(article_id: a3.id)
-u3.user_articles.create(article_id: a2.id)
+# u1.user_articles.create(article_id: a1.id)
+# u1.user_articles.create(article_id: a2.id)
+# u1.user_articles.create(article_id: a3.id)
+# u2.user_articles.create(article_id: a1.id)
+# u2.user_articles.create(article_id: a3.id)
+# u3.user_articles.create(article_id: a2.id)

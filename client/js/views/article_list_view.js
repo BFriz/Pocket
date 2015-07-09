@@ -19,8 +19,14 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
   },
   render: function(){
     console.log('article list view render')
+    // Select with id of ArticleList from index.html
+    var articleList = $('#articleList')
     // this.$el.html(this.template(this.model.toJSON()));
     // return this;
+    this.collection.each(function(article){
+      var articleView = new PocketApp.Views.ArticleListView({model: article})
+      article
+    })
   }
   // },
   // removeArticle: function(){
