@@ -1,3 +1,9 @@
+# require 'opengraph'
+
+# article = OpenGraph.fetch('http://qz.com/441583/lyme-disease-is-spreading-faster-than-ever-and-humans-are-partly-to-blame/')
+
+# puts 'article'
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
