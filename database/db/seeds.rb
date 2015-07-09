@@ -1,8 +1,16 @@
-%w[http://qz.com/448251/new-york-stock-exchange-halts-trading/ http://www.nytimes.com/2015/07/10/us/confederate-flag-south-carolina.html?hp&action=click&pgtype=Homepage&module=first-column-region&region=top-news&WT.nav=top-news http://qz.com/428276/the-state-of-the-healthcare-supply-chain-in-three-charts/ http://qz.com/448518/what-should-one-do-in-their-20s-to-avoid-regrets-in-their-30s-and-40s/ http://qz.com/445995/its-true-parents-really-are-biased-toward-firstborns/ http://qz.com/445344/is-turmoil-from-chinas-stock-market-downturn-headed-your-way/ http://qz.com/413792/instead-of-following-your-passion-find-a-career-that-changes-peoples-lives/ http://qz.com/428276/the-state-of-the-healthcare-supply-chain-in-three-charts/].each do |link|
+Article.delete_all
+
+
+
+%w[http://qz.com/448251/new-york-stock-exchange-halts-trading/ http://www.nytimes.com/2015/07/10/us/confederate-flag-south-carolina.html?hp&action=click&pgtype=Homepage&module=first-column-region&region=top-news&WT.nav=top-news http://qz.com/428276/the-state-of-the-healthcare-supply-chain-in-three-charts/ http://qz.com/448518/what-should-one-do-in-their-20s-to-avoid-regrets-in-their-30s-and-40s/ 
+  http://qz.com/445995/its-true-parents-really-are-biased-toward-firstborns/ http://qz.com/445344/is-turmoil-from-chinas-stock-market-downturn-headed-your-way/ http://qz.com/413792/instead-of-following-your-passion-find-a-career-that-changes-peoples-lives/ http://qz.com/428276/the-state-of-the-healthcare-supply-chain-in-three-charts/ http://www.vice.com/en_uk/read/why-critics-are-wrong-about-the-human-centipede-films].each do |link|
   resp = HTTParty.get(link)
 
   doc = Nokogiri::HTML(resp.body)
-  puts doc.at('meta[property="og:title"]')['content']
+  title = doc.at('meta[property="og:title"]')['content']
+  description = doc.at('meta[property="og:description"]')['content']
+  # author = doc.at('meta[property="og:site_name"]')['content']
+  Article.create(title: title, description: description)
 end
 
 # article = OpenGraph.fetch('http://qz.com/441583/lyme-disease-is-spreading-faster-than-ever-and-humans-are-partly-to-blame/')
@@ -18,7 +26,6 @@ end
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # User.delete_all
-# Article.delete_all
 # Comment.delete_all
 
 # u1 = User.create(name: 'Ben', email: 'bfrisb@gmail.com')
