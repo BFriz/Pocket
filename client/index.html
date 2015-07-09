@@ -7,10 +7,21 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.1/backbone-min.js"></script>
-  <title>Document</title>
+    <script src="script.js"></script>
+    <script src="js/routes/router.js"></script>
+    
+    <script src="js/models/article.js"></script>
+    <script src="js/collections/article_list.js"></script>
+    <script src="js/views/article_view.js"></script>
+    <script src="js/views/article_list_view.js"></script>
+
+  <title>Pocket</title>
 </head>
 <body>
-
+  <script type="text/x-underscore-template "id="tpl-article">
+    <h3 class="article"><%= article %></h3>
+    <button class="edit"> Edit </button>
+    <button class="remove">Remove</button>
 
 </body>
 </html>

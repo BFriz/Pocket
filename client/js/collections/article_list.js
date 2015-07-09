@@ -1,4 +1,4 @@
-Article.Article_list = Backbone.Collection.extend({
-  url: '/articles',
-  model: Article.Content
+PocketApp.Collections.ArticleList = Backbone.Collection.extend({
+  url: 'http://localhost:3000/articles',
+  model: PocketApp.Models.Article
 })
