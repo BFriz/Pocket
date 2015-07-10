@@ -1,8 +1,8 @@
 PocketApp.Views.ArticleListView = Backbone.View.extend({
   el: '#article',
   events: {
-    'submit form#add': 'createArticle'
-    // "click button.remove": 'removeArticle',
+    'submit form#add': 'createArticle',
+    "click button.remove": 'removeArticle'
     // 'click button.edit': 'editArticle',
     // 'click button.save': 'saveArticle'
   },
@@ -32,18 +32,17 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
   },
   addArticle: function(url){
     var article = new PocketApp.Models.Article({url: url});
-    debugger;
+    
     this.collection.create(article);
-  
   },
   createArticle: function(event){
     event.preventDefault();
-    var url = this.$('#url-upload');
     debugger;
-    var name = this.$('category-upload');
-    this.addArticle(url.val());
+    var url = this.$('#url-upload');
+    var name = this.$('#name-upload');
+    this.addArticle(url.val(), name.val());
     url.val('');
-    category.val('');
+    name.val('');
   }
  
 }); 

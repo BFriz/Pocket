@@ -9,3 +9,4 @@ class CategoriesController < ApplicationController
 
     render json: category if category.save
   end
+end

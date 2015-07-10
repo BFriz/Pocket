@@ -3,7 +3,6 @@ PocketApp.Models.Article = Backbone.Model.extend({
   defaults: {
     title: '',
     author: '',
-    category: '',
     url: ''
   }
 })
