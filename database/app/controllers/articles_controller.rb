@@ -7,8 +7,8 @@ class ArticlesController < ApplicationController
   def create
     article = Article.create(url: params[:url])
     article.scrapedata
-
-    render json: article if article.save
+    
+    render json: article if article.saves
   end
   def destroy
     article = Article.find(params[:id]).destroy

@@ -6,7 +6,6 @@ class CategoriesController < ApplicationController
   end
   def create
     category = Category.create(name: params[:name])
-
-    render json: category if category.save
+    render json:category if category.save
   end
 end

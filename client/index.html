@@ -11,6 +11,7 @@
     <script src="js/routes/router.js"></script>
 
     <script src="js/models/article.js"></script>
+    <script src="js/models/category.js"></script>
     <script src="js/collections/article_list.js"></script>
     <script src="js/views/article_view.js"></script>
     <script src="js/views/article_list_view.js"></script>
@@ -21,7 +22,7 @@
  <div id="article">
     <form action="#" id="add">
       <input type="text" id="url-upload" name="Url" placeholder="Please enter URL link"/>
-      <input type="text" id="name-upload" name="name" placeholder="Enter the categories for this article"/>
+      <input type="text" id="category-upload" name="category" placeholder="Enter the categories for this article"/>
       <input type="submit" value="Add"/>
     </form>
     <div id="articleList" class="pure-g">
@@ -32,6 +33,9 @@
     <h3 class="article"><%= title %></h3>
     <button class="edit"> Edit </button>
     <button class="remove">Remove</button>
-
+    <% _.each(categories, function(category) { %>
+     <%= category.name %>
+     <% }); %>
+    </script>
 </body>
 </html>
