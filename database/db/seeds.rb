@@ -3,7 +3,7 @@ Article.delete_all
 
 
 %w[http://qz.com/448251/new-york-stock-exchange-halts-trading/ http://www.nytimes.com/2015/07/10/us/confederate-flag-south-carolina.html?hp&action=click&pgtype=Homepage&module=first-column-region&region=top-news&WT.nav=top-news http://qz.com/428276/the-state-of-the-healthcare-supply-chain-in-three-charts/ http://qz.com/448518/what-should-one-do-in-their-20s-to-avoid-regrets-in-their-30s-and-40s/ 
-  http://qz.com/445995/its-true-parents-really-are-biased-toward-firstborns/ http://qz.com/445344/is-turmoil-from-chinas-stock-market-downturn-headed-your-way/ http://qz.com/413792/instead-of-following-your-passion-find-a-career-that-changes-peoples-lives/ http://qz.com/428276/the-state-of-the-healthcare-supply-chain-in-three-charts/ http://www.vice.com/en_uk/read/why-critics-are-wrong-about-the-human-centipede-films].each do |link|
+  http://qz.com/445995/its-true-parents-really-are-biased-toward-firstborns/ http://qz.com/445344/is-turmoil-from-chinas-stock-market-downturn-headed-your-way/ http://qz.com/413792/instead-of-following-your-passion-find-a-career-that-changes-peoples-lives/ http://qz.com/428276/the-state-of-the-healthcare-supply-chain-in-three-charts/ http://www.vice.com/en_uk/read/why-critics-are-wrong-about-the-human-centipede-films http://qz.com/449223/the-apple-watch-and-the-rise-of-the-personal-cloud/].each do |link|
   resp = HTTParty.get(link)
 
   doc = Nokogiri::HTML(resp.body)
@@ -58,3 +58,20 @@ puts "#{Article.all.count} articles seeded!"""
 # u2.user_articles.create(article_id: a1.id)
 # u2.user_articles.create(article_id: a3.id)
 # u3.user_articles.create(article_id: a2.id)
+
+
+# cat1 = Category.create({name: 'Finance'})
+# cat2 = Category.create({name: 'Basketball'})
+
+# a1.article_categories.create(category_id: cat1.id)
+
+
+
+
+
+
+
+
+
+
+
