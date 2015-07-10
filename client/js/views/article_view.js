@@ -12,11 +12,10 @@ PocketApp.Views.ArticleView = Backbone.View.extend({
   render: function(){
     this.$el.html(this.articleTemplate(this.model.toJSON()));
     return this;
-  }
-//   },
-//   removeArticle: function(){
-//     this.model.destroy();
-//   },
+  },
+  removeArticle: function(){
+    this.model.destroy();
+  },
 //   editArticle: function(){
 //     this.$('h1, p').each(function(){
 //       $(this).replaceWith($('<input class="' + $(this).attr('class') + '" value="' + $(this).text() + '" />'));

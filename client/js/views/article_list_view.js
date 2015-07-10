@@ -22,26 +22,28 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
     console.log('article list view render')
     // Select with id of ArticleList from index.html
     var articleList = $('#articleList')
+    articleList.empty();
     // this.$el.html(this.template(this.model.toJSON()));
     // return this;
     this.collection.each(function(article){
       var articleView = new PocketApp.Views.ArticleView({model: article})
       articleList.append(articleView.render().el);
-    })
+    });
+  },
+  addArticle: function(url){
+    var article = new PocketApp.Models.Article({url: url});
+    this.collection.create(article);
+    // debugger;
+  },
+  createArticle: function(event){
+    event.preventDefault();
+    var url = this.$('#url-upload');
+    debugger;
+
+    var name = this.$('category-upload');
+    this.addArticle(url.val(), category.val());
+    url.val('');
+    category.val('');
   }
-  // },
-  // removeArticle: function(){
-  //   this.model.destroy();
-  // },
-  // editArticle: function(){
-  //   this.$('h3').each(function(){
-  //     $(this).replaceWith($('<input class="' + $(this).attr('class') + '" value="' + $(this).text() + '" />'));
-  //   });
-  //   this.$('button.edit').text('Save').addClass('save').removeClass('edit');
-  // },
-  // saveArticle: function(){
-  //   this.model.set({
-  //     task: this.$('input.task').val()
-  //   })
-  // }
+ 
 }); 
