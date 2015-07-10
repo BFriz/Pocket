@@ -32,16 +32,16 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
   },
   addArticle: function(url){
     var article = new PocketApp.Models.Article({url: url});
+    debugger;
     this.collection.create(article);
-    // debugger;
+  
   },
   createArticle: function(event){
     event.preventDefault();
     var url = this.$('#url-upload');
     debugger;
-
     var name = this.$('category-upload');
-    this.addArticle(url.val(), category.val());
+    this.addArticle(url.val());
     url.val('');
     category.val('');
   }
