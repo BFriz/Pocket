@@ -1,8 +1,8 @@
 class CategoriesController < ApplicationController
   def index
-    category = Category.all.order(:id)
+    categories = Category.all.order(:id)
 
-    render json:category
+    render json:categories
   end
   def create
     category = Category.create(name: params[:name])

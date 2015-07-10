@@ -1,4 +1,4 @@
 class Category < ActiveRecord::Base
   has_many :article_categories, dependent: :destroy
-  has_many :users, through: :user_articles
+  has_many :articles, through: :article_categories
 end

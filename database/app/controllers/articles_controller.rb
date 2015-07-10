@@ -1,9 +1,8 @@
 class ArticlesController < ApplicationController
   def index
     articles = Article.all.order(:id)
-    # Do somesort of method in here for category
 
-    render json:articles
+    render :json => articles, :include => :categories
   end
   def create
     article = Article.create(url: params[:url])
@@ -14,7 +13,7 @@ class ArticlesController < ApplicationController
   def destroy
     article = Article.find(params[:id]).destroy
   end
-  
+
   # def update
   #   article = Article.find(params[:id])
 

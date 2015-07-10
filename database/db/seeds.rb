@@ -13,6 +13,28 @@ Article.delete_all
   Article.create(title: title, description: description)
 end
 
+cat1 = Category.create({name: 'Finance'})
+cat2 = Category.create({name: 'Basketball'})
+cat3 = Category.create({name: 'Tennis'})
+cat4 = Category.create({name: 'Tech'})
+cat5 = Category.create({name: 'Hope'})
+
+
+a1 = Article.first
+a2 = Article.last
+
+
+a1.article_categories.create(category_id: cat1.id)
+a1.article_categories.create(category_id: cat2.id)
+a1.article_categories.create(category_id: cat3.id)
+
+a2.article_categories.create(category_id: cat2.id)
+a2.article_categories.create(category_id: cat3.id)
+a2.article_categories.create(category_id: cat4.id)
+a2.article_categories.create(category_id: cat5.id)
+
+
+
 # article = OpenGraph.fetch('http://qz.com/441583/lyme-disease-is-spreading-faster-than-ever-and-humans-are-partly-to-blame/')
 
 # puts 'article'
