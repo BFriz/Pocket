@@ -39,21 +39,21 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
 
     this.collection.create(article);
   },
-  addCategory: function(category){
-    var category = new PocketApp.Models.Category({name: category});
+  // addCategory: function(category){
+  //   var category = new PocketApp.Models.Category({name: category});
 
-    category.save()
-  },
+  //   category.save()
+  // },
   createArticle: function(event){
     event.preventDefault();
     var url = this.$('#url-upload');
-    var category = this.$('#category-upload');
+    // var category = this.$('#category-upload');
     // debugger;
     this.addArticle(url.val());
     // this.addCategory(category.val());
 
     url.val('');
-    category.val('');
+    // category.val('');
 
   }
  

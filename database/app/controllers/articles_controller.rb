@@ -2,14 +2,14 @@ class ArticlesController < ApplicationController
   def index
     articles = Article.all.order(:id)
 
-    render :json => articles
-    # render :json => articles, :include => :categories
+    # render json: articles
+    render :json => articles, :include => :categories
   end
   def create
-    article = Article.create(url: params[:url])
+    articles = Article.create(url: params[:url])
     article.scrapedata
     
-    render :json => articles
+    render json: articles if articles.save
     # render :json => articles, :include => :categories
   end
   def destroy
