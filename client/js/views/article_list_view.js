@@ -26,14 +26,16 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
     articleList.empty();
     // this.$el.html(this.template(this.model.toJSON()));
     // return this;
+    // collection of all the articles from the article view
     this.collection.each(function(article){
       var articleView = new PocketApp.Views.ArticleView({model: article})
       articleList.append(articleView.render().el);
     });
+    //After the above code heads of to the router APP
   },
   addArticle: function(url){
     var article = new PocketApp.Models.Article({url: url});
-    debugger;
+    // debugger;
 
     this.collection.create(article);
   },
@@ -44,7 +46,6 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
   },
   createArticle: function(event){
     event.preventDefault();
-    // debugger;
     var url = this.$('#url-upload');
     var category = this.$('#category-upload');
     // debugger;

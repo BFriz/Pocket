@@ -7,3 +7,4 @@ PocketApp.AppRouter = Backbone.Router.extend({
     articleListView.render();
   }
 })
+// After article_list_view comes here and renders articleListView onto the site - then heads to do backbone stuff then to script.js
