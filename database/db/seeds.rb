@@ -9,6 +9,7 @@ Article.delete_all
   doc = Nokogiri::HTML(resp.body)
   title = doc.at('meta[property="og:title"]')['content']
   description = doc.at('meta[property="og:description"]')['content']
+  # image = doc.at('meta[property="og:image"]')['content']
   # author = doc.at('meta[property="og:site_name"]')['content']
   Article.create(title: title, description: description)
 end

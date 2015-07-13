@@ -11,6 +11,7 @@ var PocketApp = PocketApp || {
 }
 
 $(document).ready(function(){
+  //create the app view for devise
   PocketApp.appview = new PocketApp.Views.appView();
   PocketApp.articles = new PocketApp.Collections.ArticleList([]);
   var router = new PocketApp.AppRouter();

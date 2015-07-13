@@ -30,3 +30,4 @@ PocketApp.Views.ArticleView = Backbone.View.extend({
 //     })
 //   }
 }); 
+

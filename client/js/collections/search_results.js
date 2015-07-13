@@ -5,6 +5,7 @@ SearchResults = Backbone.Collection.extend({
 }, {
   search: function(searchTerm();
     results.searchTerm = "some search term";
+    // This is my ajax request
     results.fetch({
       success: function(){
         myApp.vent.trigger("search:results", results);

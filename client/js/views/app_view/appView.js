@@ -17,5 +17,3 @@ PocketApp.Views.appView = Backbone.View.extend({
     }
   }
 });
-
-// CurrentUser --> Loggedout or loggedInView

@@ -1,0 +1,40 @@
+<div id="app">
+</div>
+
+<script>
+  ReviewMi.currentUser = '<%= current_username %>'
+</script>
+
+<!-- underscore.js templates -->
+
+<!-- APP VIEW -->
+<script id="appView" type="text/x-underscore-template">
+  <h1>ReviewMi</h1>
+
+  <div id="user">
+  </div>
+
+  <p>Navigation</p>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#search/movies">Search Movies</a></li>
+  </ul>
+
+  <div id="main">
+  </div>
+</script>
+
+<script id="loggedOutView" type="text/x-underscore-template">
+  <p>Login here:</p>
+  <form>
+    <label>Username:</label>
+    <input type="text" id="username">
+    <label>Password:</label>
+    <input type="password" id="password">
+    <button id="login">Login</button>
+  </form>
+</script>
+
+<script id="loggedInView" type="text/x-underscore-template">
+  logged in as: {{ ReviewMi.currentUser }} <button id="logout">Logout</button>
+</script>

@@ -12,10 +12,12 @@ class Article < ActiveRecord::Base
     doc = Nokogiri::HTML(resp.body)
     title = doc.at('meta[property="og:title"]')['content']
     description = doc.at('meta[property="og:description"]')['content']
+    image = doc.at('meta[property="og:image"]')['content']
     # author = doc.at('meta[property="og:site_name"]')['content']
-              self.title = title
-          self.description = description
-        self.save
+        self.title = title
+        self.description = description
+        self.image = image
+          self.save
 
  end
 
