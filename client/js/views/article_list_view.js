@@ -20,40 +20,38 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
     })
   },
   render: function(){
+    // debugger;
     console.log('article list view render')
     // Select with id of ArticleList from index.html
     var articleList = $('#articleList')
     articleList.empty();
+    // debugger;
     // this.$el.html(this.template(this.model.toJSON()));
     // return this;
     // collection of all the articles from the article view
     this.collection.each(function(article){
+      console.log(article)
       var articleView = new PocketApp.Views.ArticleView({model: article})
-      articleList.append(articleView.render().el);
+      $('#articleList').append(articleView.render().el);
     });
     //After the above code heads of to the router APP
   },
-  addArticle: function(url){
-    var article = new PocketApp.Models.Article({url: url});
-    // debugger;
+  addArticle: function(url, category){
+    var article = new PocketApp.Models.Article({url: url, categories: category});
+    //var category = new PocketApp.Models.Category({name: category});
+
+    console.log('article created')
 
     this.collection.create(article);
   },
-  // addCategory: function(category){
-  //   var category = new PocketApp.Models.Category({name: category});
-
-  //   category.save()
-  // },
   createArticle: function(event){
     event.preventDefault();
     var url = this.$('#url-upload');
-    // var category = this.$('#category-upload');
+    var category = this.$('#category-upload');
     // debugger;
-    this.addArticle(url.val());
-    // this.addCategory(category.val());
-
+    this.addArticle(url.val(), category.val());
     url.val('');
-    // category.val('');
+    category.val('');
 
   }
  

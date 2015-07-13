@@ -11,11 +11,13 @@ var PocketApp = PocketApp || {
 }
 
 $(document).ready(function(){
+  PocketApp.appview = new PocketApp.Views.appView();
   PocketApp.articles = new PocketApp.Collections.ArticleList([]);
   var router = new PocketApp.AppRouter();
   //comes here from Router PocketApp.AppRouter is = Backbone.Router.extend({
     // 2    routes: { from the router.js file. then heads back to the article_list+view to render articles on the page. 
   Backbone.history.start();
+
 });
 
 

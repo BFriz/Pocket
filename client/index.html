@@ -14,11 +14,14 @@
     <script src="js/models/category.js"></script>
     <script src="js/collections/article_list.js"></script>
     <script src="js/views/article_view.js"></script>
+    <script src="js/views/appView.js"></script>
     <script src="js/views/article_list_view.js"></script>
 
   <title>Pocket</title>
 </head>
 <body>
+
+  <div id="app"></div>
  <div id="article">
     <form action="#" id="add">
       <input type="text" id="url-upload" name="Url" placeholder="Please enter URL link"/>
@@ -29,6 +32,19 @@
       <!-- Articles will hopefully be loaded inside here -->
     </div>
   </div>
+  <!-- This is for devise -->
+  <script id="appView" type="text/x-underscore-template">
+   <h1>ReviewMi</h1>
+      <div id="user">
+      </div>
+   <p>Navigation</p>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#search/movies">Search Movies</a></li>
+    </ul>
+  <div id="main">
+  </div>
+</script>
   <script type="text/x-underscore-template "id="tpl_article">
     <h3 class="article"><%= title %></h3>
     <button class="edit"> Edit </button>
