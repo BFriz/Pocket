@@ -6,10 +6,15 @@ class ArticlesController < ApplicationController
     render :json => articles, :include => :categories
   end
   def create
-    articles = Article.create(url: params[:url])
+    # binding.pry
+    article = Article.create(url: params[:url])
+    params[:categories].split(', ').each do |name|
+      category = Category.create(name: name)
+      ArticleCategory.create(category_id: category.id, article_id: article.id)
+    end
     article.scrapedata
     
-    render json: articles if articles.save
+    render :json => article, :include => :categories
     # render :json => articles, :include => :categories
   end
   def destroy
