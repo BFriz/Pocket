@@ -3,3 +3,5 @@ class AddDescriptionToArticles < ActiveRecord::Migration
     add_column :articles, :description, :string
   end
 end
+
+

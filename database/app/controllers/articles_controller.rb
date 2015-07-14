@@ -8,15 +8,17 @@ class ArticlesController < ApplicationController
   def create
     # binding.pry
     article = Article.create(url: params[:url])
+    article.scrapedata
+
     params[:categories].split(', ').each do |name|
       category = Category.create(name: name)
       ArticleCategory.create(category_id: category.id, article_id: article.id)
     end
-    article.scrapedata
     
     render :json => article, :include => :categories
     # render :json => articles, :include => :categories
   end
+  
   def destroy
     article = Article.find(params[:id]).destroy
   end
