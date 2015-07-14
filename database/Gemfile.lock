@@ -176,6 +176,7 @@ DEPENDENCIES
   rack-cors
   rails (= 4.2.1)
   rails-api
+  responders
   rspec-rails (~> 3.0)
   spring
   thin

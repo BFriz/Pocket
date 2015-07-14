@@ -1,7 +1,11 @@
-class SessionController < Devise::SessionsController
+class SessionsController < Devise::SessionsController
+ # include ActionController::MimeResponds
+ # include ActionController::ImplicitRender
+
   skip_before_filter :require_no_authentication, only: [:create]
 
   def create
+    puts 'CREATE'
     # Allow users to reach this route even if they are not authenticated
     user = User.find_for_database_authentication(email: params[:email])
 
@@ -19,31 +23,21 @@ class SessionController < Devise::SessionsController
       }, status: 422
     end
   end
+
   def show
-    
+
+  end
+  
+  def destroy 
+    sign_out current_user
+    render json: {:success => true, :message => 'SUCCESS: logged out'}
   end
 
+  private
+
+  def current_user
+    User.find_by authentication_token: params[:authentication_token]
+  end
+
+
 end
- 
-
-
-
- # def create
-  #   user = User.where(:username => params[:username]).first
-  #   if user.present? && user.authenticate(params[:password])
-  #     session[:user_id] = user.id
-
-  #     render :json => {:success => true, :message => "SUCCESS: logged in as #{user.username}", 
-  #                      :username => user.username}
-  #   else
-  #     session[:user_id] = nil
-
-  #     render :json => {:success => false, :message => 'ERROR: Incorrect username or password, please try again.'}
-  #   end
-  # end
-
-  # def destroy
-  #   session[:user_id] = nil
-
-  #   render :json => {:success => true, :message => 'SUCCESS: logged out'}
-  # end

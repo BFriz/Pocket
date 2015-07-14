@@ -20,5 +20,5 @@ class Article < ActiveRecord::Base
       self.save
 
   end
-<meta property="og:url" name="og:url" content="http://www.vice.com/en_uk/read/lambeth-drugs-laughing-gas-crackdown-police-208">
+# <meta property="og:url" name="og:url" content="http://www.vice.com/en_uk/read/lambeth-drugs-laughing-gas-crackdown-police-208">
 end
