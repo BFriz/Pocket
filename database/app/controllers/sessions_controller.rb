@@ -1,5 +1,6 @@
 class SessionController < Devise::SessionsController
   skip_before_filter :require_no_authentication, only: [:create]
+
   def create
     # Allow users to reach this route even if they are not authenticated
     user = User.find_for_database_authentication(email: params[:email])
@@ -18,6 +19,10 @@ class SessionController < Devise::SessionsController
       }, status: 422
     end
   end
+  def show
+    
+  end
+
 end
  
 
