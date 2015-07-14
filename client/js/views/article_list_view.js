@@ -9,6 +9,7 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
   },
   initialize: function(){
     // this.template = _.template($('#tpl-article').html());
+    console.log(this)
     this.collection.bind('add remove change', this.render, this);
     this.collection.fetch({
       success: function(collection, response, options) {

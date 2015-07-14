@@ -13,37 +13,30 @@ PocketApp.Views.loggedOutView = Backbone.View.extend({
   },
 
   events: {
-    'click #login': 'login'
+    'submit form#login': 'login'
   },
-
   login: function (event) {
-    var username = $('#username').val();
+    var email = $('#email').val();
     var password = $('#password').val();
 
-    console.log('username: ', username, 'password :', password);
+    console.log('email: ', email, 'password :', password);
 
     event.preventDefault();
 
     var request = $.ajax({
       type: 'POST',
       dataType: 'json',
-      url: '/login',
+      url: 'http://localhost:3000/users/sign_in',
       data: { 
-        username: username,
+        email: email,
         password: password
       }
     //what to do on success
     }).done(function (data) {
-      if (data.success === true) {
-        //update the PocketApp currentUser variable
-        PocketApp.currentUser = data.username;
-        //change view to logged out
+        console.log('logged in')
+        PocketApp.router.navigate('#profile')
         var view = new PocketApp.Views.loggedInView();
         view.render();
-      } else {
-        //update the PocketApp currentUser variable
-        PocketApp.currentUser = '';
-      }
     });
   }
 });

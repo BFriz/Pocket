@@ -90,14 +90,15 @@
   <div id="main">
   </div>
   </script>
+  
   <script id="loggedOutView" type="text/x-underscore-template">
     <p>Login here:</p>
-    <form>
-      <label>Username:</label>
-      <input type="text" id="username">
+    <form id="login">
+      <label>Email:</label>
+      <input type="text" id="email" name="email">
       <label>Password:</label>
-      <input type="password" id="password">
-      <button id="login">Login</button>
+      <input type="password" id="password" name="password">
+      <button type="submit">Login</button>
     </form>
   </script>
 

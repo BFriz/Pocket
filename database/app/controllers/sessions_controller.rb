@@ -1,6 +1,6 @@
 class SessionsController < Devise::SessionsController
- # include ActionController::MimeResponds
- # include ActionController::ImplicitRender
+ include ActionController::MimeResponds
+ include ActionController::ImplicitRender
 
   skip_before_filter :require_no_authentication, only: [:create]
 
