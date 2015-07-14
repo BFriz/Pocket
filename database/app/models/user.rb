@@ -20,9 +20,7 @@ class User < ActiveRecord::Base
       self.authentication_token = generate_authentication_token
     end
   end
-
-
-
+  
   has_many :friendships
   has_many :friends, :through => :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
@@ -40,7 +38,6 @@ class User < ActiveRecord::Base
   validates :password, format: { with: /\A\S+\z/, message: "cannot include whitespace characters"}
 
   #use bcrypt to convert password to a password digest
-  has_secure_password
 
 
   
