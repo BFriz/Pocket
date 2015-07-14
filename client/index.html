@@ -23,11 +23,16 @@
   <title>Pocket</title>
 </head>
 <body>
-
+<script type="text/template" id="search_template">
+    <input type="text" id="search_input" />
+    <input type="button" id="search_button" value="Search me?" />
+</script>
 
 
   <div id="app"></div>
  <div id="article">
+      <button class="sortBy">Sorter</button>
+ 
     <form action="#" id="add">
       <input type="text" id="url-upload" name="Url" placeholder="Please enter URL link"/>
       <input type="text" id="category-upload" name="category" placeholder="Enter the categories for this article"/>
@@ -41,10 +46,7 @@
 
 
 
-<script type="text/template" id="search_template">
-    <input type="text" id="search_input" />
-    <input type="button" id="search_button" value="Search me?" />
-</script>
+
 
 <div id="search_container"></div>
 
@@ -74,21 +76,6 @@
   var search_view = new SearchView({ el: $("#search_container") });
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <!-- This is for devise -->
   <script id="appView" type="text/x-underscore-template">
    <h1>PocketApp</h1>
@@ -117,9 +104,13 @@
     logged in as: {{ PocketApp.currentUser }} <button id="logout">Logout</button>
   </script>
   <!-- Searchy search search <-->
+  <!-- <% _.sortBy(articles, created_at).reverse() %> -->
 
   <script type="text/x-underscore-template "id="tpl_article">
     <h3 class="article"><%= title %></h3>
+    <h5 class="article"><%= description %></h5>
+    <img src= "http://app.qz.com/img/qz_og_img.png" alt="">
+
     <button class="edit"> Edit </button>
     <button class="remove">Remove</button>
     <% _.each(categories, function(category) { %>
@@ -127,4 +118,13 @@
      <% }); %>
     </script>
 </body>
+
+
+
+
 </html>
+
+
+
+
+

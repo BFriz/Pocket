@@ -3,8 +3,8 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
   events: {
     'submit form#add': 'createArticle',
     "click button.remove": 'removeArticle',
-    'click button#search_articleList': 'articleSearch'
-    // 'click button.edit': 'editArticle',
+    'click button#search_articleList': 'articleSearch',
+    'click button.sortBy': 'sortBy'
     // 'click button.save': 'saveArticle'
   },
   initialize: function(){
@@ -25,6 +25,7 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
     // console.log('article list view render')
     // Select with id of ArticleList from index.html
     var articleList = $('#articleList')
+    // debugger;
     articleList.empty();
     // debugger;
     // this.$el.html(this.template(this.model.toJSON()));
@@ -39,6 +40,8 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
   },
   addArticle: function(url, category){
     var article = new PocketApp.Models.Article({url: url, categories: category});
+    // debugger;
+    article.scrapedata
     //var category = new PocketApp.Models.Category({name: category});
     // console.log('article created')
     this.collection.create(article);
@@ -53,7 +56,7 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
     category.val('');
   },
     articleSearch: function() {
-      debugger;
+      // debugger;
     // grab the juery list that holds the list of articles and empty it
     var articleList = $('#search_articleList');
     console.log('Working?')
@@ -71,6 +74,10 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
     });
     // If there are no matches append a notification
     $('.mcc-account').length === 0 ? accountList.append('<li>--No accounts found--</li>') : false;
+  },
+  sortBy: function() {
+    debugger;
+    this.collection.models
   }
  
 }); 
