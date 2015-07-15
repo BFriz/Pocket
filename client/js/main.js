@@ -1,0 +1,1 @@
+// <meta property="og:image" content="http://static01.nyt.com/images/2015/07/15/world/middleeast/15Iran2-web/15Iran2-web-facebookJumbo.jpg">

@@ -41,10 +41,11 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
   },
   addArticle: function(url, category){
     var article = new PocketApp.Models.Article({url: url, categories: category});
-    // debugger;
+    debugger;
     article.scrapedata
     //var category = new PocketApp.Models.Category({name: category});
     // console.log('article created')
+
     this.collection.create(article);
   },
   createArticle: function(event){
@@ -79,6 +80,28 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
   sortBy: function() {
     debugger;
     this.collection.models
-  }
+  },
+  var SearchView = Backbone.View.extend({
+    initialize: function(){
+      this.render();
+    },
+    render: function(){
+      //Pass variables in using Underscore.js Template
+      var variables = { search_label: "My Search" };
+      // Compile the template using underscore
+      var template = _.template( $("#search_template").html(), variables );
+      // Load the compiled HTML into the Backbone "el"
+      this.$el.html( template );
+    },
+    events: {
+      "click input[type=button]": "doSearch"  
+    },
+    doSearch: function( event ){
+      debugger;
+      // Button clicked, you can access the element that was clicked with event.currentTarget
+      alert( "Search for " + $("#search_input").val() );
+    }
+  });
+
  
 }); 

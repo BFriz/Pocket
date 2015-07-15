@@ -7,7 +7,7 @@ PocketApp.AppRouter = Backbone.Router.extend({
   // home page - where articles are located
   index: function() {
     var articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });
-    console.log(this)
+    // console.log(this)
     articleListView.render();
 
      // var articleView = new PocketApp.Views.ArticleView({model: article})
