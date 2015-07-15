@@ -126,18 +126,16 @@
   <!-- Searchy search search <-->
   <!-- <% _.sortBy(articles, created_at).reverse() %> -->
 
- <div class="col-sm-4">
-  <script type="text/x-underscore-template "id="tpl_article" class="col-sm-4">
+  <script type="text/x-underscore-template "id="tpl_article" class="box30">
     <h3 class="article"><%= title %></h3>
     <h5 class="article"><%= description %></h5>
 
     <button class="edit"> Edit </button>
     <button class="remove">Remove</button>
-    <% _.each(categories, function(category) { %>
+    <p class="categories_articles"><% _.each(categories, function(category) { %>
      <%= category.name %>
-     <% }); %>
+     <% }); %></p>
     </script>
- </div>
 
 </body>
 
