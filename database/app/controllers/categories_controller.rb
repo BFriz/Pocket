@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
   def index
-    binding.pry
     categories = Category.all.order(:id)
 
     render json:categories

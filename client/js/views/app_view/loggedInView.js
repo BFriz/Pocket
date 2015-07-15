@@ -1,5 +1,5 @@
 PocketApp.Views.loggedInView = Backbone.View.extend({
-  el: '#user',
+  el: '#user-login',
 
   initialize: function () {
     //unbind any existing event handlers
@@ -10,6 +10,8 @@ PocketApp.Views.loggedInView = Backbone.View.extend({
   },
 
   render: function () {
+    console.log('render loggedInView')
+
     this.$el.html( this.template() );
   },
 
@@ -21,18 +23,20 @@ PocketApp.Views.loggedInView = Backbone.View.extend({
 
     event.preventDefault();
 
+    var token = Cookies.get('authentication_token')
+
     var request = $.ajax({
       type: 'DELETE',
-      url: 'http://localhost:3000/users/sign_out'
+      url: 'http://localhost:3000/users/' + token
     //what to do on success
     }).done(function (data) {
-      //set currentUser to blank
-      // Cookies.remove('authentication_token')
-      PocketApp.currentUser = '';
+      PocketApp.currentUser = {};
+      Cookies.remove('authentication_token')
       //take the user back to the home page and re-render
       PocketApp.router.navigate('/', true);
-      PocketApp.appView.render();
-    }).error(function(error) {
+      PocketApp.Views.appview = new PocketApp.Views.appView();
+      PocketApp.Views.appview.render();
+    }).fail(function(error) {
       console.log(error)
     })
 

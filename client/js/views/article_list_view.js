@@ -50,7 +50,6 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
   addArticle: function(url, category){
     var article = new PocketApp.Models.Article({url: url, categories: category});
     debugger;
-    article.scrapedata
     //var category = new PocketApp.Models.Category({name: category});
     // console.log('article created')
 
@@ -79,7 +78,7 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
     $.each(article, function(i,e) {
       var curr_acc = e.attributes.name;
       if (curr_acc.toLowerCase().includes(search) === true) {
-        accountList.append('<div class="mcc-account">'+curr_acc+'</div>')
+        accountList.prepend('<div class="mcc-account">'+curr_acc+'</div>')
       }       
     });
     // If there are no matches append a notification

@@ -31,7 +31,6 @@ class User < ActiveRecord::Base
   validates :email, :presence => true
 
   validates :email, :length => { :minimum => 6, :maximum => 20 }
-  validates :email, format: { with: /\A[A-z0-9_]+\z/, message: "only allows letters, numbers and underscores" }
 
   validates :password, :length => { :minimum => 8 }
   validates :password, format: { with: /\A\S+\z/, message: "cannot include whitespace characters"}

@@ -1,11 +1,10 @@
 class SessionsController < Devise::SessionsController
- include ActionController::MimeResponds
- include ActionController::ImplicitRender
+  include ActionController::MimeResponds
+  include ActionController::ImplicitRender
 
   skip_before_filter :require_no_authentication, only: [:create]
 
   def create
-    puts 'CREATE'
     # Allow users to reach this route even if they are not authenticated
     user = User.find_for_database_authentication(email: params[:email])
 
@@ -25,10 +24,10 @@ class SessionsController < Devise::SessionsController
   end
 
   def show
-
+    render json: current_user
   end
   
-  def destroy 
+  def destroy
     sign_out current_user
     render json: {:success => true, :message => 'SUCCESS: logged out'}
   end

@@ -27,44 +27,37 @@
 </head>
 <body>
 <!-- Below is navigation bar -->
-<div class="jumbotron">
-  <div class="container">
-    <div class="logo box40">
-      <h1><a href="#">PocketApp</h1>      
-    </div>
+  <div class="jumbotron">
+    <div class="container">
+      <div class="logo box40">
+        <h1><a href="#">PocketApp</a></h1>      
+      </div>
 
-    <div class="nav box40">
-      <ul>
-        <li><a href="#">Home</li>
-        <li><a href="#">Login</li>
-        <li><a href="#">Signup</li>
-        <li id="search_container">
-          <script type="text/template" id="search_template">
-            <li><input type="text" id="search_input" /></li>
-            <li><input type="button" id="search_button" value="Search me?" /></li>
-          </script>
-          </li> 
-        </div>
-      </ul>
+      <div class="nav box40">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Signup</a></li>
+          <li id="search_container"></li> 
+        </ul>
+      </div>
     </div>
   </div>
-</div>
 <!-- end -->
 
 
+  <div id="user-login"></div>
+  <div id="user-signup"></div>
 
-
-
-
-
-  <div id="app"></div>
- <div id="article">
-      <button class="sortBy">Sorter</button>
- 
+  <div id="app">
+    
+  </div>
+  <div id="article"> 
     <form action="#" id="add">
-      <input type="text" id="url-upload" name="Url" placeholder="Please enter URL link"/>
-      <input type="text" id="category-upload" name="category" placeholder="Enter the categories for this article"/>
+      <input type="text" class="box20" id="url-upload" name="Url" placeholder="Please enter URL link"/>
+      <input type="text" id="category-upload" class="box20" name="category" placeholder="Enter the categories for this article"/>
       <input type="submit" value="Add"/>
+      <button class="sortBy">Sorter</button>
     </form>
     <div id="articleList" class="pure-g">
       <!-- Articles will hopefully be loaded inside here -->
@@ -72,7 +65,10 @@
   </div>
 
 
-
+<script type="text/template" id="search_template">
+  <li><input type="text" id="search_input" /></li>
+  <li><input type="button" id="search_button" value="Search me?" /></li>
+</script>
 
 
 
@@ -110,33 +106,54 @@
 
 
   <script id="loggedOutView" type="text/x-underscore-template">
-    <p>Login here:</p>
-    <form id="login">
-      <label>Email:</label>
-      <input type="text" id="email" name="email">
-      <label>Password:</label>
-      <input type="password" id="password" name="password">
-      <button type="submit">Login</button>
-    </form>
+    <div class="box box50">
+      
+      <p>Login here:</p>
+      <form id="login">
+        <label>Email:</label>
+        <input type="text" id="email" name="email">
+        <label>Password:</label>
+        <input type="password" id="password" name="password">
+        <button type="submit">Login</button>
+      </form>
+    </div>
+    <div class="box box50">
+      <p>SignUp here:</p>
+      <form id="signup">
+        <label>Email:</label>
+        <input type="text" id="email-signup" name="email">
+        <label>Password:</label>
+        <input type="password" id="password-signup" name="password">
+        <label>Please Retype Your Password:</label>
+        <input type="password" id="password-confirmation-signup" name="password-confirmation">
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
   </script>
 
   <script id="loggedInView" type="text/x-underscore-template">
-    logged in as: {{ PocketApp.currentUser }} <button id="logout">Logout</button>
+    logged in as: <%= PocketApp.currentUser.email %> <button id="logout">Logout</button>
   </script>
   <!-- Searchy search search <-->
   <!-- <% _.sortBy(articles, created_at).reverse() %> -->
 
-  <script type="text/x-underscore-template "id="tpl_article" class="box30">
+  <script type="text/x-underscore-template" id="tpl_article">
+  <% if(_.isEmpty(PocketApp.currentUser)) { %>
+    <h3 class="article"><%= title %></h3>
+    <h5 class="article"><%= description %></h5>
+  <% } else { %>
     <h3 class="article"><%= title %></h3>
     <h5 class="article"><%= description %></h5>
 
     <button class="edit"> Edit </button>
     <button class="remove">Remove</button>
-    <p class="categories_articles"><% _.each(categories, function(category) { %>
-     <%= category.name %>
-     <% }); %></p>
-    </script>
-
+    <p class="categories_articles">
+      <% _.each(categories, function(category) { %>
+        <%= category.name %>
+      <% }); %>
+    </p>
+  <% } %>
+</script>
 </body>
 
 

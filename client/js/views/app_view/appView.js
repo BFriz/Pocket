@@ -6,14 +6,27 @@ PocketApp.Views.appView = Backbone.View.extend({
   },
 
   render: function () {
+    console.log('app view rendered')
     this.$el.html( this.template() );
 
-    if (PocketApp.currentUser) {
-      var view = new PocketApp.Views.loggedInView();
-      view.render();
+    var token = Cookies.get('authentication_token')
+    console.log('logged in? ' + !!token)
+    if (!!token) {
+      this.getCurrentUser(token);
+      var articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });
+      articleListView.render();
     } else {
       var view = new PocketApp.Views.loggedOutView();
       view.render();
+      var articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });
+      articleListView.render();
     }
+  },
+  getCurrentUser: function(token) {
+    $.get('http://localhost:3000/users/' + token, function(response) {
+      PocketApp.currentUser = response;
+      var view = new PocketApp.Views.loggedInView();
+      view.render();
+    })
   }
 });

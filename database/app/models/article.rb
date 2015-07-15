@@ -5,6 +5,8 @@ class Article < ActiveRecord::Base
   has_many :article_categories, dependent: :destroy
   has_many :categories, through: :article_categories
 
+
+
   def scrapedata
 
     theUrl = self.url
@@ -14,11 +16,14 @@ class Article < ActiveRecord::Base
     description = doc.at('meta[property="og:description"]')['content']
     image = doc.at('meta[property="twitter:image"]')['content']
     # author = doc.at('meta[property="og:site_name"]')['content']
-        self.title = title
-        self.description = description
-        self.image = image
-      self.save
+    self.title = title
+    self.description = description
+    # self.image = image
+    self.save
 
   end
 # <meta property="og:url" name="og:url" content="http://www.vice.com/en_uk/read/lambeth-drugs-laughing-gas-crackdown-police-208">
 end
+
+
+# <meta property="article:published" itemprop="datePublished" content="2015-07-15">
