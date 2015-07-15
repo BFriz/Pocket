@@ -4,6 +4,7 @@ PocketApp.Models.Article = Backbone.Model.extend({
     title: '',
     author: '',
     url: '',
-    description: ''
+    description: '',
+    image: ''
   }
 })

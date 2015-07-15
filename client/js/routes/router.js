@@ -18,8 +18,8 @@ PocketApp.AppRouter = Backbone.Router.extend({
   },
   signIn: function() {
     console.log("sign in route");
-    PocketApp.Views.appview = new PocketApp.Views.appView();
-    PocketApp.Views.appview.render();
+    // PocketApp.Views.appview = new PocketApp.Views.appView();
+    // PocketApp.Views.appview.render();
     // var view = new PocketApp.Views.loggedOutView();
     // view.render();
   },
@@ -29,8 +29,8 @@ PocketApp.AppRouter = Backbone.Router.extend({
   profile: function(){
     console.log("profile route")
 
-    var articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });
-    articleListView.render();
+    // var articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });
+    // articleListView.render();
   }
 });
 

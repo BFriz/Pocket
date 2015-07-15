@@ -18,7 +18,7 @@ class Article < ActiveRecord::Base
     # author = doc.at('meta[property="og:site_name"]')['content']
     self.title = title
     self.description = description
-    # self.image = image
+    self.image = image
     self.save
 
   end

@@ -8,17 +8,18 @@ PocketApp.Views.appView = Backbone.View.extend({
   render: function () {
     console.log('app view rendered')
     this.$el.html( this.template() );
-
+    var articleListView;
     var token = Cookies.get('authentication_token')
     console.log('logged in? ' + !!token)
     if (!!token) {
       this.getCurrentUser(token);
-      var articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });
+      articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });
       articleListView.render();
     } else {
+      debugger;
       var view = new PocketApp.Views.loggedOutView();
       view.render();
-      var articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });
+      articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });
       articleListView.render();
     }
   },

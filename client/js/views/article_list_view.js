@@ -49,7 +49,6 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
   },
   addArticle: function(url, category){
     var article = new PocketApp.Models.Article({url: url, categories: category});
-    debugger;
     //var category = new PocketApp.Models.Category({name: category});
     // console.log('article created')
 
@@ -87,15 +86,15 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
   sortBy: function() {
     debugger;
     this.collection.models
-  }
-  // },
+  // }
+  },
            
-  // doSearch: function( event ){
-  //   debugger;
-  //   // Button clicked, you can access the element that was clicked with event.currentTarget
-  //   alert( "Search for " + $("#search_input").val() );
+  doSearch: function( event ){
+    debugger;
+    // Button clicked, you can access the element that was clicked with event.currentTarget
+    alert( "Search for " + $("#search_input").val() );
 
-  //   }
+    }
 
 
  
