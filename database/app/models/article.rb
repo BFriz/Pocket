@@ -14,16 +14,15 @@ class Article < ActiveRecord::Base
     doc = Nokogiri::HTML(resp.body)
     title = doc.at('meta[property="og:title"]')['content']
     description = doc.at('meta[property="og:description"]')['content']
-    image = doc.at('meta[property="twitter:image"]')['content']
-    # author = doc.at('meta[property="og:site_name"]')['content']
+    image = doc.at('meta[property="og:image"]')['content']
+    site_name = doc.at('meta[property="og:site_name"]')['content']
     self.title = title
     self.description = description
     self.image = image
+    self.site_name = site_name
     self.save
 
   end
-# <meta property="og:url" name="og:url" content="http://www.vice.com/en_uk/read/lambeth-drugs-laughing-gas-crackdown-police-208">
 end
 
 
-# <meta property="article:published" itemprop="datePublished" content="2015-07-15">
