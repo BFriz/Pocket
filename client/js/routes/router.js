@@ -1,6 +1,7 @@
 PocketApp.AppRouter = Backbone.Router.extend({
   routes: {
     "": "index",
+    'profile': "profile",
     'users/sign_in' : 'signIn',
     'users/sign_up' : 'signUp'
   },
@@ -20,6 +21,9 @@ PocketApp.AppRouter = Backbone.Router.extend({
   },
   signUp: function(){
     new SignUpView().render();
+  },
+  profile: function(){
+    console.log("profile route")
   }
 });
 

@@ -5,6 +5,7 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
     "click button.remove": 'removeArticle',
     'click button#search_articleList': 'articleSearch',
     'click button.sortBy': 'sortBy'
+    // "click button#search_button": "doSearch" 
     // 'click button.save': 'saveArticle'
   },
   initialize: function(){
@@ -36,6 +37,13 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
       // console.log(article)
       var articleView = new PocketApp.Views.ArticleView({model: article})
       $('#articleList').append(articleView.render().el);
+      //Pass variables in using Underscore.js Template
+      var variables = { search_label: "My Search" };
+      // Compile the template using underscore
+      // var template = _.template( $("#search_template").html(), variables );
+      // Load the compiled HTML into the Backbone "el"
+      // debugger;
+      // this.$el.html( template );
     });
     //After the above code heads of to the router APP
   },
@@ -80,28 +88,16 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
   sortBy: function() {
     debugger;
     this.collection.models
-  },
-  var SearchView = Backbone.View.extend({
-    initialize: function(){
-      this.render();
-    },
-    render: function(){
-      //Pass variables in using Underscore.js Template
-      var variables = { search_label: "My Search" };
-      // Compile the template using underscore
-      var template = _.template( $("#search_template").html(), variables );
-      // Load the compiled HTML into the Backbone "el"
-      this.$el.html( template );
-    },
-    events: {
-      "click input[type=button]": "doSearch"  
-    },
-    doSearch: function( event ){
-      debugger;
-      // Button clicked, you can access the element that was clicked with event.currentTarget
-      alert( "Search for " + $("#search_input").val() );
-    }
-  });
+  }
+  // },
+           
+  // doSearch: function( event ){
+  //   debugger;
+  //   // Button clicked, you can access the element that was clicked with event.currentTarget
+  //   alert( "Search for " + $("#search_input").val() );
+
+  //   }
+
 
  
 }); 

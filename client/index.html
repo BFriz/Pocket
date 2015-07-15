@@ -27,13 +27,13 @@
 </head>
 <body>
 <!-- Below is navigation bar -->
-<div class="header">
+<div class="jumbotron">
   <div class="container">
-    <div class="logo">
+    <div class="logo box40">
       <h1><a href="#">PocketApp</h1>      
     </div>
 
-    <div class="nav">
+    <div class="nav box40">
       <ul>
         <li><a href="#">Home</li>
         <li><a href="#">Login</li>
@@ -78,7 +78,28 @@
 
 
 <script type="text/javascript">
-  
+  var SearchView = Backbone.View.extend({
+    initialize: function(){
+      this.render();
+    },
+    render: function(){
+      //Pass variables in using Underscore.js Template
+      var variables = { search_label: "My Search" };
+      // Compile the template using underscore
+      var template = _.template( $("#search_template").html(), variables );
+      // Load the compiled HTML into the Backbone "el"
+      this.$el.html( template );
+    },
+    events: {
+      "click input[type=button]": "doSearch"  
+    },
+    doSearch: function( event ){
+      debugger;
+      // Button clicked, you can access the element that was clicked with event.currentTarget
+      alert( "Search for " + $("#search_input").val() );
+    }
+  });
+
   var search_view = new SearchView({ el: $("#search_container") });
 </script>
 
@@ -105,10 +126,10 @@
   <!-- Searchy search search <-->
   <!-- <% _.sortBy(articles, created_at).reverse() %> -->
 
-  <script type="text/x-underscore-template "id="tpl_article">
+ <div class="col-sm-4">
+  <script type="text/x-underscore-template "id="tpl_article" class="col-sm-4">
     <h3 class="article"><%= title %></h3>
     <h5 class="article"><%= description %></h5>
-    <img src= "http://app.qz.com/img/qz_og_img.png" alt="">
 
     <button class="edit"> Edit </button>
     <button class="remove">Remove</button>
@@ -116,7 +137,8 @@
      <%= category.name %>
      <% }); %>
     </script>
-    
+ </div>
+
 </body>
 
 
