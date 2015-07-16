@@ -1,7 +1,6 @@
 PocketApp.Views.ArticleListView = Backbone.View.extend({
   el: '#article',
   events: {
-    'submit form#add': 'createArticle',
     "click button.remove": 'removeArticle',
     'click button#search_articleList': 'articleSearch',
     'click button.sortBy': 'sortBy'
@@ -36,7 +35,7 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
     this.collection.each(function(article){
       // console.log(article)
       var articleView = new PocketApp.Views.ArticleView({model: article})
-      $('#articleList').append(articleView.render().el);
+      $('#articleList').prepend(articleView.render().el);
       //Pass variables in using Underscore.js Template
       var variables = { search_label: "My Search" };
       // Compile the template using underscore
@@ -47,22 +46,22 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
     });
     //After the above code heads of to the router APP
   },
-  addArticle: function(url, category){
-    var article = new PocketApp.Models.Article({url: url, categories: category});
-    //var category = new PocketApp.Models.Category({name: category});
-    // console.log('article created')
+  // addArticle: function(url, category){
+  //   var article = new PocketApp.Models.Article({url: url, categories: category});
+  //   //var category = new PocketApp.Models.Category({name: category});
+  //   // console.log('article created')
 
-    this.collection.create(article);
-  },
-  createArticle: function(event){
-    event.preventDefault();
-    var url = this.$('#url-upload');
-    var category = this.$('#category-upload');
-    // debugger;
-    this.addArticle(url.val(), category.val());
-    url.val('');
-    category.val('');
-  },
+  //   this.collection.create(article);
+  // },
+  // createArticle: function(event){
+  //   event.preventDefault();
+  //   var url = this.$('#url-upload');
+  //   var category = this.$('#category-upload');
+  //   // debugger;
+  //   this.addArticle(url.val(), category.val());
+  //   url.val('');
+  //   category.val('');
+  // },
     articleSearch: function() {
       // debugger;
     // grab the juery list that holds the list of articles and empty it

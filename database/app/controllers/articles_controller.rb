@@ -7,6 +7,10 @@ class ArticlesController < ApplicationController
   end
   def create
     # binding.pry
+
+    item = Item.create(number: params[:number], description: params[:description], location: params[:location], bucketlist_id: current_user.bucketlist.id)
+
+    
     article = Article.create(url: params[:url])
     article.scrapedata
 

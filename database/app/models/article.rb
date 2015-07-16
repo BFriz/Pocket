@@ -8,7 +8,6 @@ class Article < ActiveRecord::Base
 
 
   def scrapedata
-
     theUrl = self.url
     resp = HTTParty.get(theUrl)
     doc = Nokogiri::HTML(resp.body)
@@ -16,7 +15,7 @@ class Article < ActiveRecord::Base
       title = doc.at('meta[property="og:title"]')['content']
       description = doc.at('meta[property="og:description"]')['content']
       image = doc.at('meta[property="og:image"]')['content']
-      site_name = doc.at('meta[property="og:site_name"]')['content']
+      # site_name = doc.at('meta[property="og:site_name"]')['content']
 
     self.title = title
     self.description = description

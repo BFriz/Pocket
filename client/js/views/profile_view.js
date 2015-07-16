@@ -7,7 +7,7 @@ PocketApp.Views.ProfileView = Backbone.View.extend({
   },
   initialize: function () {
     console.log('init profile view')
-    this.articleTemplate = _.template($('#tpl_article').html());
+    // this.articleTemplate = _.template($('#tpl_article').html());
     this.template = _.template($('#profile_template').html() );
 
   },
@@ -27,13 +27,12 @@ PocketApp.Views.ProfileView = Backbone.View.extend({
     this.remove();
   },
   addArticle: function(url, category){
-    // debugger;
+    debugger;
     // Need to pass the url and categories so that the information is got by the article_view
     var article = new PocketApp.Models.Article({url: url, categories: category});
     // console.log('article created')
   //   // debugger;
     this.collection.create(article);
-    debugger;
   },
   createArticle: function(event){
     event.preventDefault();

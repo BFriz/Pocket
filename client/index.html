@@ -152,13 +152,15 @@
 
   <script type="text/x-underscore-template" id="tpl_article">
   <% if(_.isEmpty(PocketApp.currentUser)) { %>
+    <a href= <%= url %> >
+
     <h3 class="article"><%= title %></h3>
     <h5 class="article"><%= description %></h5>
     <h5 class="article">
       <img src="<%= image %>" alt="">
     </h5>
     <h5 class="article"><%= site_name %></h5>
-
+    </a>
   <% } else { %>
 
     <a href= <%= url %> >
@@ -170,6 +172,8 @@
       </h5>
       <h5 class="article"><%= site_name %></h5>
       <button class="remove">Remove</button>
+      <button class="mine">Mine</button>
+
       <p class="categories_articles">
         <% _.each(categories, function(category) { %>
           <%= category.name %>
