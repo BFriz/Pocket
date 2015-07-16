@@ -171,8 +171,6 @@
         <img src=<%= image %> alt="">
       </h5>
       <h5 class="article"><%= site_name %></h5>
-      <button class="remove">Remove</button>
-      <button class="mine">Mine</button>
 
       <p class="categories_articles">
         <% _.each(categories, function(category) { %>
@@ -180,7 +178,10 @@
         <% }); %>
       </p>
     </a>
+      <button class="remove">Remove</button>
 
+      <button class="mine">Mine</button>
+      
     <% } %>
 
 </script>

@@ -1,7 +1,7 @@
 PocketApp.Views.ArticleListView = Backbone.View.extend({
   el: '#article',
   events: {
-    "click button.remove": 'removeArticle',
+    // "click button.remove": 'removeArticle',
     'click button#search_articleList': 'articleSearch',
     'click button.sortBy': 'sortBy'
     // "click button#search_button": "doSearch" 
@@ -10,7 +10,7 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
   initialize: function(){
     // this.template = _.template($('#tpl-article').html());
     console.log(this)
-    this.collection.bind('add remove change', this.render, this);
+    this.collection.bind('add remove change', this.render, this);    
     this.collection.fetch({
       success: function(collection, response, options) {
         // console.log(response)
@@ -20,6 +20,7 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
         console.log('error')
       }
     })
+  // }
   },
   render: function(){
     // debugger;
@@ -37,7 +38,7 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
       var articleView = new PocketApp.Views.ArticleView({model: article})
       $('#articleList').prepend(articleView.render().el);
       //Pass variables in using Underscore.js Template
-      var variables = { search_label: "My Search" };
+      var variables = { searchch_label: "My Search" };
       // Compile the template using underscore
       // var template = _.template( $("#search_template").html(), variables );
       // Load the compiled HTML into the Backbone "el"
@@ -46,22 +47,7 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
     });
     //After the above code heads of to the router APP
   },
-  // addArticle: function(url, category){
-  //   var article = new PocketApp.Models.Article({url: url, categories: category});
-  //   //var category = new PocketApp.Models.Category({name: category});
-  //   // console.log('article created')
-
-  //   this.collection.create(article);
-  // },
-  // createArticle: function(event){
-  //   event.preventDefault();
-  //   var url = this.$('#url-upload');
-  //   var category = this.$('#category-upload');
-  //   // debugger;
-  //   this.addArticle(url.val(), category.val());
-  //   url.val('');
-  //   category.val('');
-  // },
+  
     articleSearch: function() {
       // debugger;
     // grab the juery list that holds the list of articles and empty it

@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+
+  # before_action :authenticate_user!
+
   def index
     articles = Article.all.order(:id)
 
@@ -7,10 +10,8 @@ class ArticlesController < ApplicationController
   end
   def create
     # binding.pry
+    # article = Article.create(url: params[:url], user_id: current_user.user.id)
 
-    item = Item.create(number: params[:number], description: params[:description], location: params[:location], bucketlist_id: current_user.bucketlist.id)
-
-    
     article = Article.create(url: params[:url])
     article.scrapedata
 
