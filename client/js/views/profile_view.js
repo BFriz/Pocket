@@ -33,6 +33,7 @@ PocketApp.Views.ProfileView = Backbone.View.extend({
     // console.log('article created')
   //   // debugger;
     this.collection.create(article);
+    debugger;
   },
   createArticle: function(event){
     event.preventDefault();

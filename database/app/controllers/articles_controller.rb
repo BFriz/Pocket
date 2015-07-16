@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
     render :json => articles, :include => :categories
   end
   def create
-    binding.pry
+    # binding.pry
     article = Article.create(url: params[:url])
     article.scrapedata
 

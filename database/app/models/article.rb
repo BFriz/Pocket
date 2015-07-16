@@ -12,10 +12,12 @@ class Article < ActiveRecord::Base
     theUrl = self.url
     resp = HTTParty.get(theUrl)
     doc = Nokogiri::HTML(resp.body)
-    title = doc.at('meta[property="og:title"]')['content']
-    description = doc.at('meta[property="og:description"]')['content']
-    image = doc.at('meta[property="og:image"]')['content']
-    site_name = doc.at('meta[property="og:site_name"]')['content']
+
+      title = doc.at('meta[property="og:title"]')['content']
+      description = doc.at('meta[property="og:description"]')['content']
+      image = doc.at('meta[property="og:image"]')['content']
+      site_name = doc.at('meta[property="og:site_name"]')['content']
+
     self.title = title
     self.description = description
     self.image = image

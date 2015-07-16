@@ -3,7 +3,7 @@ PocketApp.Views.HomeView = Backbone.View.extend({
 
   initialize: function () {
     console.log('init home view')
-    
+    debugger;
     this.template = _.template($('#article_template').html() );
   },
 

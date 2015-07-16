@@ -57,12 +57,12 @@
   <div id="app">
     
   </div>
-
+      
+      <!-- Articles will hopefully be loaded inside here -->
 <script type="text/template" id="article_template">
   <div id="article"> 
     
     <div id="articleList" class="pure-g">
-      <!-- Articles will hopefully be loaded inside here -->
     </div>
   </div>
 </script>
@@ -113,6 +113,7 @@
 
   <!-- This is for articles -->
   <script id="appView" type="text/x-underscore-template">
+
   </script>
   <!-- end -->
 
@@ -160,25 +161,25 @@
 
   <% } else { %>
 
-    <h3 class="article"><%= title %></h3>
-    <h5 class="article"><%= description %></h5>
-    <h5 class="article">
-      <img src="<%= image %>" alt="">
-    </h5>
-    <h5 class="article"><%= site_name %></h5>
+    <a href= <%= url %> >
 
+      <h3 class="article"><%= title %></h3>
+      <h5 class="article"><%= description %></h5>
+      <h5 class="article">
+        <img src=<%= image %> alt="">
+      </h5>
+      <h5 class="article"><%= site_name %></h5>
+      <button class="remove">Remove</button>
+      <p class="categories_articles">
+        <% _.each(categories, function(category) { %>
+          <%= category.name %>
+        <% }); %>
+      </p>
+    </a>
 
+    <% } %>
 
-    <button class="edit"> Edit </button>
-    <button class="remove">Remove</button>
-    <p class="categories_articles">
-      <% _.each(categories, function(category) { %>
-        <%= category.name %>
-      <% }); %>
-    </p>
-  <% } %>
 </script>
-
 
 </body>
 

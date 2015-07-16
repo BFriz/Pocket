@@ -23,13 +23,12 @@ li {
   list-style: none;
   float: left;
   margin-left: 15px;
-  padding-top: 15px;
+  padding-top: 8px;
 }
 
 .nav {
   float: right;
-  margin-right: 15%;  
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .button {
@@ -42,4 +41,8 @@ li {
 
 .articlething {
   padding: 20%;
+}
+
+#user-login {
+  font-size: 20px;
 }

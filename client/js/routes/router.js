@@ -27,9 +27,11 @@ PocketApp.AppRouter = Backbone.Router.extend({
     console.log("profile route")
     var token = Cookies.get('authentication_token')
     if (!!token) {
+      // var loggedOutView = new PocketApp.Views.loggedOutView();
+      // loggedOutView.render();
       this.getCurrentUser(token);
       var articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });
-      // articleListView.render();
+      articleListView.render();
 
     } else {
       var view = new PocketApp.Views.loggedOutView();
