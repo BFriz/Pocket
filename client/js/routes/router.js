@@ -28,6 +28,8 @@ PocketApp.AppRouter = Backbone.Router.extend({
     var token = Cookies.get('authentication_token')
     if (!!token) {
       this.getCurrentUser(token);
+      var articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });
+      // articleListView.render();
 
     } else {
       var view = new PocketApp.Views.loggedOutView();
@@ -38,7 +40,7 @@ PocketApp.AppRouter = Backbone.Router.extend({
     $.get('http://localhost:3000/users/' + token, function(response) {
       PocketApp.currentUser = response;
       PocketApp.router.navigate('#profile', {trigger: true})
-      var profileView = new PocketApp.Views.ProfileView();
+      var profileView = new PocketApp.Views.ProfileView({ collection: PocketApp.articles });
       profileView.render();
       var view = new PocketApp.Views.loggedInView();
       view.render();
