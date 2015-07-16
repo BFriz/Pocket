@@ -1,6 +1,6 @@
 PocketApp.Views.ArticleView = Backbone.View.extend({
   tagName: 'div',
-  className: 'box30 box',
+  className: 'box30 box articlething',
   events: {
     "click button.remove": 'removeArticle',
     'click button.edit': 'editArticle',

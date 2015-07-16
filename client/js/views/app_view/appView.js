@@ -16,7 +16,6 @@ PocketApp.Views.appView = Backbone.View.extend({
       articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });
       articleListView.render();
     } else {
-      debugger;
       var view = new PocketApp.Views.loggedOutView();
       view.render();
       articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });

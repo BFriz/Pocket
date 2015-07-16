@@ -1,4 +1,4 @@
-// PocketApp.Views.CategoryView = Backbone.View.extend({
+PocketApp.Views.CategoryView = Backbone.View.extend({
 //   tagName: 'div',
 //   className: 'pure-u-1-3',
 //   events: {'subnmit form#add': 'createCategory'},
@@ -34,4 +34,4 @@
 //     number.val('');
 //   }
 // })
-// })
+})
