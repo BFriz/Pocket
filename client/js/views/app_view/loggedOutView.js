@@ -1,5 +1,5 @@
 PocketApp.Views.loggedOutView = Backbone.View.extend({
-  el: '#user-login',
+  el: '#app',
 
   initialize: function () {
     //unbind any existing event handlers
@@ -70,9 +70,7 @@ PocketApp.Views.loggedOutView = Backbone.View.extend({
         console.log('logged in')
         PocketApp.currentUser = data;
         Cookies.set('authentication_token', data.authentication_token);
-        PocketApp.router.navigate('#profile')
-        PocketApp.Views.appview = new PocketApp.Views.appView();
-        PocketApp.Views.appview.render();
+        PocketApp.router.navigate('#profile', {trigger: true})
     }).fail(function(err) {
       console.log(err)
     })

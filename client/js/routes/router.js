@@ -2,49 +2,46 @@ PocketApp.AppRouter = Backbone.Router.extend({
   routes: {
     "": "index",
     'profile': "profile",
-    'users/sign_in' : 'signIn',
-    'users/sign_up' : 'signUp'
+    'users/sign_in' : 'signIn'
   },
   // home page - where articles are located
   index: function() {
-    // PocketApp.Views.appview = new PocketApp.Views.appView();
-    // PocketApp.Views.appview.render();
-    // var articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });
-    // articleListView.render();
+    PocketApp.Views.HomeView = new PocketApp.Views.HomeView();
+    PocketApp.Views.HomeView.render();
 
-     // var articleView = new PocketApp.Views.ArticleView({model: article})
-     //   $('#articleList').append(articleView.render().el);
-     //    });
+    var articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });
+    articleListView.render();
   },
   signIn: function() {
     console.log("sign in route");
-    // PocketApp.Views.appview = new PocketApp.Views.appView();
-    // PocketApp.Views.appview.render();
-    // var view = new PocketApp.Views.loggedOutView();
-    // view.render();
-  },
-  signUp: function(){
-    // new SignUpView().render();
+
+    var token = Cookies.get('authentication_token')
+    if (!!token) {
+      this.getCurrentUser(token);
+    } else {
+      var loggedOutView = new PocketApp.Views.loggedOutView();
+      loggedOutView.render();
+    }
   },
   profile: function(){
     console.log("profile route")
+    var token = Cookies.get('authentication_token')
+    if (!!token) {
+      this.getCurrentUser(token);
 
-    // var articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });
-    // articleListView.render();
+    } else {
+      var view = new PocketApp.Views.loggedOutView();
+      view.render();
+    }
+  },
+  getCurrentUser: function(token) {
+    $.get('http://localhost:3000/users/' + token, function(response) {
+      PocketApp.currentUser = response;
+      PocketApp.router.navigate('#profile', {trigger: true})
+      var profileView = new PocketApp.Views.ProfileView();
+      profileView.render();
+      var view = new PocketApp.Views.loggedInView();
+      view.render();
+    })
   }
 });
-
-  // },
-  //page of the specfic user - shows groups and articles for current user
-//   profile: function () {
-//     var profile = new PocketApp.Views.profilePage();
-//     profile.render()
-//   }
-// });
-// After article_list_view comes here and renders articleListView onto the site - then heads to do backbone stuff then to script.js
-
-
-
-
-
-

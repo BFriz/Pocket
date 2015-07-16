@@ -11,12 +11,16 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.1/backbone-min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.2/js.cookie.js"></script>
     <script src="script.js"></script>
+
     <script src="js/routes/router.js"></script>
+
 
     <script src="js/models/article.js"></script>
     <script src="js/models/category.js"></script>
     <script src="js/collections/article_list.js"></script>
+    <script src="js/views/home_view.js"></script>
     <script src="js/views/article_view.js"></script>
+    <script src="js/views/profile_view.js"></script>
     <script src="js/views/app_view/appView.js"></script>
     <script src="js/views/app_view/loggedInView.js"></script>
     <script src="js/views/app_view/loggedOutView.js"></script>
@@ -38,7 +42,6 @@
           <li><a href="/">Home</a></li>
           <li><a href="/#profile">Profile</a></li>
           <li><a href="/#users/sign_in">Login</a></li>
-          <li><a href="/#users/sign_up">Signup</a></li>
           <li id="search_container"></li> 
         </ul>
       </div>
@@ -49,21 +52,20 @@
 
   <div id="user-login"></div>
   <div id="user-signup"></div>
+  <div id="profile"></div>
 
   <div id="app">
     
   </div>
+
+<script type="text/template" id="article_template">
   <div id="article"> 
-    <form action="#" id="add">
-      <input type="text" class="box20" id="url-upload" name="Url" placeholder="Please enter URL link"/>
-      <input type="text" id="category-upload" class="box20" name="category" placeholder="Enter the categories for this article"/>
-      <input type="submit" value="Add"/>
-      <button class="sortBy">Sorter</button>
-    </form>
+    
     <div id="articleList" class="pure-g">
       <!-- Articles will hopefully be loaded inside here -->
     </div>
   </div>
+</script>
 
 
 <script type="text/template" id="search_template">
@@ -71,6 +73,15 @@
   <li><input type="button" id="search_button" value="Search me?" /></li>
 </script>
 
+<script type="text/template" id="profile_template">
+  <div id="articleList" class="pure-g">
+  <form action="#" id="add">
+      <input type="text" class="box20" id="url-upload" name="Url" placeholder="Please enter URL link"/>
+      <input type="text" id="category-upload" class="box20" name="category" placeholder="Enter the categories for this article"/>
+      <input type="submit" value="Add"/>
+      <button class="sortBy">Sorter</button>
+    </form>
+</script>
 
 
 
@@ -148,6 +159,7 @@
     <h5 class="article"><%= site_name %></h5>
 
   <% } else { %>
+
     <h3 class="article"><%= title %></h3>
     <h5 class="article"><%= description %></h5>
     <h5 class="article">

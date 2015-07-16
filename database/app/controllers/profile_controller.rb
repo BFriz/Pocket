@@ -1,4 +1,4 @@
-class ArticlesController < ApplicationController
+class ProfilesController < ApplicationController
   def index
     articles = Article.all.order(:id)
 
