@@ -2,9 +2,9 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
   el: '#article',
   events: {
     // "click button.remove": 'removeArticle',
-    // 'click button#search_articleList': 'articleSearch'
-    // 'click button.sortBy': 'sortBy'
-    // "click button#search_button": "articleSearch" 
+    'click button#search_articleList': 'articleSearch',
+    'click button.sortBy': 'sortBy'
+    // "click button#search_button": "doSearch" 
     // 'click button.save': 'saveArticle'
   },
   initialize: function(){
@@ -47,10 +47,11 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
     });
     //After the above code heads of to the router APP
   },
+  
     articleSearch: function() {
       // debugger;
     // grab the juery list that holds the list of articles and empty it
-    var articleList = $('#search_input');
+    var articleList = $('#search_articleList');
     console.log('Working?')
     articleList.empty();
     // store a copy of the accounts from our backbone collection
