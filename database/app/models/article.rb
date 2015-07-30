@@ -5,7 +5,11 @@ class Article < ActiveRecord::Base
   has_many :article_categories, dependent: :destroy
   has_many :categories, through: :article_categories
 
+  after_create :clean_data
 
+  def clean_data
+    Article.where(title: nil).delete_all
+  end
 
   def scrapedata
     theUrl = self.url
@@ -17,11 +21,12 @@ class Article < ActiveRecord::Base
       image = doc.at('meta[property="og:image"]')['content']
       # site_name = doc.at('meta[property="og:site_name"]')['content']
 
-    self.title = title
-    self.description = description
-    self.image = image
-    self.site_name = site_name
-    self.save
+      Article.create(title: title, description: description, image: image)
+    # self.title = title
+    # self.description = description
+    # self.image = image
+    # self.site_name = site_name
+    # self.save
 
   end
 end

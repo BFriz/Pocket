@@ -10,7 +10,6 @@ PocketApp.Views.ArticleView = Backbone.View.extend({
     this.articleTemplate = _.template($('#tpl_article').html());
   },
   render: function(){
-    // debugger;
 
     this.$el.html(this.articleTemplate(this.model.toJSON()));
     return this;

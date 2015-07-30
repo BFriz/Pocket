@@ -21,6 +21,8 @@
     <script src="js/views/home_view.js"></script>
     <script src="js/views/article_view.js"></script>
     <script src="js/views/profile_view.js"></script>
+    <script src="js/views/search.js"></script>
+
     <script src="js/views/app_view/appView.js"></script>
     <script src="js/views/app_view/loggedInView.js"></script>
     <script src="js/views/app_view/loggedOutView.js"></script>
@@ -57,6 +59,11 @@
   <div id="app">
     
   </div>
+    <!-- This is for articles -->
+  <script id="appView" type="text/x-underscore-template">
+
+  </script>
+  <!-- end -->
       
       <!-- Articles will hopefully be loaded inside here -->
 <script type="text/template" id="article_template">
@@ -67,55 +74,22 @@
   </div>
 </script>
 
-
+<!-- This is for the search box on the top right -->
 <script type="text/template" id="search_template">
   <li><input type="text" id="search_input" /></li>
   <li><input type="button" id="search_button" value="Search me?" /></li>
 </script>
 
+<!-- This is to input articles -->
 <script type="text/template" id="profile_template">
   <div id="articleList" class="pure-g">
   <form action="#" id="add">
       <input type="text" class="box20" id="url-upload" name="Url" placeholder="Please enter URL link"/>
       <input type="text" id="category-upload" class="box20" name="category" placeholder="Enter the categories for this article"/>
       <input type="submit" value="Add"/>
-      <button class="sortBy">Sorter</button>
     </form>
 </script>
 
-
-
-<script type="text/javascript">
-  var SearchView = Backbone.View.extend({
-    initialize: function(){
-      this.render();
-    },
-    render: function(){
-      //Pass variables in using Underscore.js Template
-      var variables = { search_label: "My Search" };
-      // Compile the template using underscore
-      var template = _.template( $("#search_template").html(), variables );
-      // Load the compiled HTML into the Backbone "el"
-      this.$el.html( template );
-    },
-    events: {
-      "click input[type=button]": "doSearch"  
-    },
-    doSearch: function( event ){
-      debugger;
-      // Button clicked, you can access the element that was clicked with event.currentTarget
-      alert( "Search for " + $("#search_input").val() );
-    }
-  });
-
-  var search_view = new SearchView({ el: $("#search_container") });
-</script>
-
-  <!-- This is for articles -->
-  <script id="appView" type="text/x-underscore-template">
-
-  </script>
-  <!-- end -->
 
 
   <script id="loggedOutView" type="text/x-underscore-template">
@@ -147,8 +121,7 @@
   <script id="loggedInView" type="text/x-underscore-template">
     logged in as: <%= PocketApp.currentUser.email %> <button id="logout">Logout</button>
   </script>
-  <!-- Searchy search search <-->
-  <!-- <% _.sortBy(articles, created_at).reverse() %> -->
+ 
 
   <script type="text/x-underscore-template" id="tpl_article">
   <% if(_.isEmpty(PocketApp.currentUser)) { %>

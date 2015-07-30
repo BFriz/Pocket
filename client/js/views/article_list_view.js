@@ -24,26 +24,16 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
   },
   render: function(){
     // debugger;
-    // console.log('article list view render')
-    // Select with id of ArticleList from index.html
+    // // console.log('article list view render')
     var articleList = $('#articleList')
-    // debugger;
-    articleList.empty();
-    // debugger;
-    // this.$el.html(this.template(this.model.toJSON()));
-    // return this;
-    // collection of all the articles from the article view
+    // articleList.empty();
+    // // collection of all the articles from the article view
     this.collection.each(function(article){
-      // console.log(article)
       var articleView = new PocketApp.Views.ArticleView({model: article})
-      $('#articleList').prepend(articleView.render().el);
-      //Pass variables in using Underscore.js Template
-      var variables = { searchch_label: "My Search" };
-      // Compile the template using underscore
-      // var template = _.template( $("#search_template").html(), variables );
-      // Load the compiled HTML into the Backbone "el"
+      articleList.prepend(articleView.render().el);
       // debugger;
-      // this.$el.html( template );
+    //   //Pass variables in using Underscore.js Template
+    //   var variables = { searchch_label: "My Search" };
     });
     //After the above code heads of to the router APP
   },
@@ -72,12 +62,6 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
     debugger;
     this.collection.models
   // }
-  },
-           
-  doSearch: function( event ){
-    debugger;
-    // Button clicked, you can access the element that was clicked with event.currentTarget
-    alert( "Search for " + $("#search_input").val() );
 
     }
 

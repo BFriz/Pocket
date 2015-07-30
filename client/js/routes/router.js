@@ -29,7 +29,7 @@ PocketApp.AppRouter = Backbone.Router.extend({
     if (!!token) {
       this.getCurrentUser(token);
       var articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });
-      articleListView.render();
+      // articleListView.render();
     } else {
       var view = new PocketApp.Views.loggedOutView();
       view.render();
