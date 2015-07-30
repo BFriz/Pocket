@@ -16,7 +16,8 @@
   margin: 12px;
 }
 .box20:hover{
-  
+-webkit-animation: pulse 2s;
+    animation: pulse 2s;
 }
 
 .box30{

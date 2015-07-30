@@ -11,12 +11,15 @@
   font-size: 35px;
   margin-left: 5%;
 }
+.nav {
+  /*float: right;*/
+  font-size: 15px;
+}
 
 a { 
   font-size: 40px;
   text-decoration: none;
   color: rgb(88, 140, 126);
-
 }
 
 li {
@@ -26,10 +29,7 @@ li {
   padding-top: 8px;
 }
 
-.nav {
-  float: right;
-  font-size: 15px;
-}
+
 
 .button {
   /*color: rgb(140, 70, 70);*/
