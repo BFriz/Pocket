@@ -4,13 +4,9 @@ class ArticlesController < ApplicationController
   def index
     articles = Article.all.order(:id)
 
-    # render json: articles
     render :json => articles, :include => :categories
   end
   def create
-    # binding.pry
-    # article = Article.create(url: params[:url], user_id: current_user.user.id)
-
     article = Article.create(url: params[:url])
     article.scrapedata
 

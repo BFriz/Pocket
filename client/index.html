@@ -59,6 +59,17 @@
   <div id="app">
     
   </div>
+
+  <!-- This is to input articles -->
+<script type="text/template" id="profile_template">
+ <form action="#" id="add">
+      <input type="text" class="box20" id="url-upload" name="Url" placeholder="Please enter URL link"/>
+      <input type="text" id="category-upload" class="box20" name="category" placeholder="Enter the categories for this article"/>
+      <input type="submit" value="Add"/>
+    </form>
+  <div id="articleList" class="pure-g">
+ 
+</script>
     <!-- This is for articles -->
   <script id="appView" type="text/x-underscore-template">
 
@@ -78,16 +89,6 @@
 <script type="text/template" id="search_template">
   <li><input type="text" id="search_input" /></li>
   <li><input type="button" id="search_button" value="Search me?" /></li>
-</script>
-
-<!-- This is to input articles -->
-<script type="text/template" id="profile_template">
-  <div id="articleList" class="pure-g">
-  <form action="#" id="add">
-      <input type="text" class="box20" id="url-upload" name="Url" placeholder="Please enter URL link"/>
-      <input type="text" id="category-upload" class="box20" name="category" placeholder="Enter the categories for this article"/>
-      <input type="submit" value="Add"/>
-    </form>
 </script>
 
 

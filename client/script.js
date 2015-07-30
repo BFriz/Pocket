@@ -14,14 +14,16 @@ var PocketApp = PocketApp || {
 }
 
 $(document).ready(function(){
-  PocketApp.router = new PocketApp.AppRouter();
-  PocketApp.articles = new PocketApp.Collections.ArticleList([]);
+  PocketApp.articles = new PocketApp.Collections.ArticleList();
+  $.when(
+    PocketApp.articles.fetch()
+    ).then(function() {
+      PocketApp.router = new PocketApp.AppRouter();
+      PocketApp.Views.appview = new PocketApp.Views.appView();
+      PocketApp.Views.appview.render();
 
-
-  PocketApp.Views.appview = new PocketApp.Views.appView();
-  PocketApp.Views.appview.render();
-
-  Backbone.history.start();
+      Backbone.history.start();
+    })
 });
 
 

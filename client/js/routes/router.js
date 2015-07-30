@@ -4,7 +4,6 @@ PocketApp.AppRouter = Backbone.Router.extend({
     'profile': "profile",
     'users/sign_in' : 'signIn'
   },
-  // home page - where articles are located
   index: function() {
     PocketApp.Views.HomeView = new PocketApp.Views.HomeView();
     PocketApp.Views.HomeView.render();
@@ -13,22 +12,20 @@ PocketApp.AppRouter = Backbone.Router.extend({
     articleListView.render();
   },
   signIn: function() {
-    console.log("sign in route");
-
     var token = Cookies.get('authentication_token')
     if (!!token) {
       this.getCurrentUser(token);
+      // Need to redirect to the profile page if the user is signed in******************
     } else {
       var loggedOutView = new PocketApp.Views.loggedOutView();
       loggedOutView.render();
     }
   },
   profile: function(){
-    console.log("profile route")
     var token = Cookies.get('authentication_token')
     if (!!token) {
       this.getCurrentUser(token);
-      var articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });
+      // var articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });
       // articleListView.render();
     } else {
       var view = new PocketApp.Views.loggedOutView();
