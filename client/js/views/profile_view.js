@@ -1,6 +1,6 @@
 PocketApp.Views.ProfileView = Backbone.View.extend({
   el: '#app',
-  className: 'box30 box articlething',
+  className: 'box20 box articlething',
     events: {
     'submit form#add': 'createArticle',
   },

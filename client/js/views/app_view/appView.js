@@ -7,6 +7,7 @@ PocketApp.Views.appView = Backbone.View.extend({
 
   render: function () {
     console.log('app view rendered')
+    // debugger;
     this.$el.html( this.template() );
   //   var articleListView;
   //   var token = Cookies.get('authentication_token')

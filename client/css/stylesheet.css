@@ -42,3 +42,7 @@ li {
 #user-login {
   font-size: 20px;
 }
+.img-circle {
+    border-radius: 50%;
+    /*max-width: 300px;*/
+}
