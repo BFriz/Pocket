@@ -6,12 +6,14 @@ PocketApp.Views.ProfileView = Backbone.View.extend({
   },
   initialize: function () {
     this.template = _.template($('#profile_template').html() );
+    this.collection.bind('add remove change', this.render, this);
 
   },
   render: function () {
     var articleListView = new PocketApp.Views.ArticleListView({ collection: this.collection});
     var articlesHTML = articleListView.render();
     this.$el.html( this.template());
+    this.$el.find('#articleList').empty();
     this.$el.find('#articleList').append(articlesHTML.$el);
   },
   addArticle: function(url, category){

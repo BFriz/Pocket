@@ -7,7 +7,7 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
   },
   initialize: function(){
     // this.template = _.template($('#tpl-article').html());
-    this.collection.bind('add remove change', this.render, this);    
+    // this.collection.bind('add remove change', this.render, this);    
     this.collection.fetch({
       success: function(collection, response, options) {
       },
@@ -22,6 +22,7 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
     // // collection of all the articles from the article view
     this.collection.each(function(article){
       var articleView = new PocketApp.Views.ArticleView({model: article})
+      // Below prepends the articleView div with an id article (each article) (need to save as self because with .each the context changes each time)
       self.$el.prepend(articleView.render().el)
     });
     return self;
