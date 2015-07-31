@@ -31,18 +31,9 @@ PocketApp.Views.ProfileView = Backbone.View.extend({
     this.addArticle(url.val(), category.val());
     url.val('');
     category.val('');
-  },
-  search: function(){
-    var searchData = $('#searchText').val().toLowerCase();
-  // Make an ajax request to the server
-    this.searchResults.fetch({
-      reset: true,
-      data: {name: searchData},
-        success: function(data){
-         $('.dropdown').addClass('open');
-
-        }
-    })
+  }
+  search: function (){
+    
   }
 
 });

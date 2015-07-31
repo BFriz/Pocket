@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   def index
-    categories = Category.all.order(:id)
+    categories = Category.where("%#{params[:name]}%")
 
     render json:categories
   end
