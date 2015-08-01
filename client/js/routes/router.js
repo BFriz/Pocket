@@ -14,7 +14,7 @@ PocketApp.AppRouter = Backbone.Router.extend({
   signIn: function() {
     var token = Cookies.get('authentication_token')
     if (!!token) {
-      this.getCurrentUser(token);
+      PocketApp.router.navigate('#profile', {trigger: true});
     } else {
       var loggedOutView = new PocketApp.Views.loggedOutView();
       loggedOutView.render();
@@ -30,15 +30,16 @@ PocketApp.AppRouter = Backbone.Router.extend({
     }
   },
   getCurrentUser: function(token) {
+    console.log('getCurrentUser');
     $.get('http://localhost:3000/users/' + token, function(response) {
+      //In the response we are including the current_users articles  
       PocketApp.currentUser = response;
-      PocketApp.router.navigate('#profile', {trigger: true})
-
-      // THIS IS WHERE PROFILE VIEW IS BEING CALLED #1
-      var profileView = new PocketApp.Views.ProfileView({ collection: PocketApp.articles });
-      profileView.render();
-      var view = new PocketApp.Views.loggedInView();
-      view.render();
+      PocketApp.userArticles = new PocketApp.Collections.UserArticleList();
+      var profileView = new PocketApp.Views.ProfileView({ collection: PocketApp.userArticles });
+      // profileView.render();
+        var view = new PocketApp.Views.loggedInView();
+        view.render();
+      // })
     })
   }
 });

@@ -6,8 +6,15 @@ PocketApp.Views.ProfileView = Backbone.View.extend({
     // 'keyup .search-query' : 'search'
     },
   initialize: function () {
-    this.template = _.template($('#profile_template').html() );
-    this.collection.bind('add remove', this.renderWrapper, this);
+    self = this;
+    this.collection.fetch({
+      data: {user: PocketApp.currentUser.id}
+    }).done(function(){
+      console.log('data fetched');
+      self.template = _.template($('#profile_template').html() );
+      self.collection.bind('add remove', self.renderWrapper, self);
+      self.render();
+    })
   },
   render: function () {
     console.log('in the render profile')

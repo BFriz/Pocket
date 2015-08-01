@@ -1,5 +1,5 @@
 PocketApp.Views.appView = Backbone.View.extend({
-  // el: '#app',
+  el: '#app',
 
   initialize: function () {
     this.template = _.template($('#appView').html() );
