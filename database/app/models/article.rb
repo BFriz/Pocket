@@ -15,7 +15,7 @@ class Article < ActiveRecord::Base
     theUrl = self.url
     resp = HTTParty.get(theUrl)
     doc = Nokogiri::HTML(resp.body)
-
+# This is why the function is being called 3 times ??????
       title = doc.at('meta[property="og:title"]')['content']
       description = doc.at('meta[property="og:description"]')['content']
       image = doc.at('meta[property="og:image"]')['content']

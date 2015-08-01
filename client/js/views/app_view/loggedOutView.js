@@ -1,16 +1,14 @@
 PocketApp.Views.loggedOutView = Backbone.View.extend({
-  el: '#app',
+  // el: '#app',
 
   initialize: function () {
     //unbind any existing event handlers
-    console.log('init logged out view')
     $(this.el).undelegate('#login', 'click');
     
     this.template = _.template($('#loggedOutView').html() );
   },
 
   render: function () {
-    console.log('render logged out view')
     this.$el.html( this.template() );
   },
 
@@ -41,9 +39,7 @@ PocketApp.Views.loggedOutView = Backbone.View.extend({
         }
       }
     }).done(function (data) {
-      console.log(data)
     }).fail(function(err) {
-      console.log(err)
     })
 
 

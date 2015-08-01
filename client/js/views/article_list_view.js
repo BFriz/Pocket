@@ -1,13 +1,7 @@
 PocketApp.Views.ArticleListView = Backbone.View.extend({
   tagName: 'div',
   id: 'article',
-  events: {
-    'click button#search_articleList': 'articleSearch',
-    'click button.sortBy': 'sortBy'
-  },
   initialize: function(){
-    // this.template = _.template($('#tpl-article').html());
-    // this.collection.bind('add remove change', this.render, this);    
     this.collection.fetch({
       success: function(collection, response, options) {
       },
