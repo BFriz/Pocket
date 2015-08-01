@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     sessions: 'sessions', 
     registrations: 'registrations'
   }
-
+  
   devise_scope :user do 
     get "/users/:authentication_token", to: "sessions#show"
     delete "/users/:authentication_token", to: "sessions#destroy"
