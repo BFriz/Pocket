@@ -24,16 +24,16 @@ PocketApp.Views.ProfileView = Backbone.View.extend({
     this.$el.find('#articleList').empty();    
     this.$el.find('#articleList').append(articlesHTML.$el);
   },
-  renderWrapper: function () {
-    console.log('in the renderWRAPPER profile')
+  // renderWrapper: function () {
+  //   console.log('in the renderWRAPPER profile')
 
-     var articleListView = new PocketApp.Views.ArticleListView({ collection: this.collection});
-    var articlesHTML = articleListView.render();
-    this.$el.html(this.template());
-    this.$el.find('#articleList').empty();    
-    this.$el.find('#articleList').append(articlesHTML.$el);
+  //    var articleListView = new PocketApp.Views.ArticleListView({ collection: this.collection});
+  //   var articlesHTML = articleListView.render();
+  //   this.$el.html(this.template());
+  //   this.$el.find('#articleList').empty();    
+  //   this.$el.find('#articleList').append(articlesHTML.$el);
   
-  },
+  // },
   addArticle: function(url, category){
     // Need to pass the url and categories so that the information is got by the article_view
     var article = new PocketApp.Models.Article({url: url, categories: category});
