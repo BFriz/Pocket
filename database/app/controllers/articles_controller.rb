@@ -23,6 +23,15 @@ class ArticlesController < ApplicationController
     article = Article.find(params[:id]).destroy
   end
 
+  def user_articles
+    user = User.find(params[:user]) 
+    if user
+      render :json => user.articles, :include => :categories
+    else
+      render :json => {status: :failure}
+    end
+  end
+
   # def update
   #   article = Article.find(params[:id])
 
