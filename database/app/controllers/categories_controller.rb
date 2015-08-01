@@ -1,12 +1,13 @@
 class CategoriesController < ApplicationController
   def index
-    categories = Category.where("%#{params[:name]}%")
+    #categories = Category.where("%#{params[:name]}%")
+    categories = Category.all
 
-    render json:categories
+    render :json => categories
   end
   def create
     categories = Category.create(name: params[:name])
 
-    render json:categories if categories.save
+    render :json => categories if categories.save
   end
 end

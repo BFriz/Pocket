@@ -24,7 +24,7 @@ class SessionsController < Devise::SessionsController
   end
 
   def show
-    render json: current_user
+    render json: current_user, include: :articles
   end
   
   def destroy
