@@ -1,5 +1,5 @@
 PocketApp.Views.loggedOutView = Backbone.View.extend({
-  // el: '#app',
+  el: '#app',
 
   initialize: function () {
     //unbind any existing event handlers
