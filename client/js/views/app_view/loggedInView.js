@@ -33,9 +33,11 @@ PocketApp.Views.loggedInView = Backbone.View.extend({
       PocketApp.currentUser = {};
       Cookies.remove('authentication_token')
       //take the user back to the home page and re-render
-      PocketApp.router.navigate('/', true);
-      PocketApp.Views.appview = new PocketApp.Views.appView();
-      PocketApp.Views.appview.render();
+      PocketApp.router.index('', {trigger: true})
+
+      // PocketApp.router.navigate('/', true);
+      // PocketApp.Views.appview = new PocketApp.Views.appView();
+      // PocketApp.Views.appview.render();
     }).fail(function(error) {
       console.log(error)
     })

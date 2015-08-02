@@ -7,9 +7,6 @@ PocketApp.AppRouter = Backbone.Router.extend({
   index: function() {
     PocketApp.Views.HomeView = new PocketApp.Views.HomeView({collection: PocketApp.articles});
     PocketApp.Views.HomeView.render();
-
-    // var articleListView = new PocketApp.Views.ArticleListView({ collection: PocketApp.articles });
-    // articleListView.render();
   },
   signIn: function() {
     var token = Cookies.get('authentication_token')

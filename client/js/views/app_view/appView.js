@@ -29,9 +29,6 @@ PocketApp.Views.appView = Backbone.View.extend({
   //     var view = new PocketApp.Views.loggedInView();
   //     view.render();
   //   })
-  },
-  renderPage: function(view) {
-    console.log('renderPage' + view)
-    var currentView
+
   }
 });
