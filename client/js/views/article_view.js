@@ -17,17 +17,5 @@ PocketApp.Views.ArticleView = Backbone.View.extend({
 
     this.model.destroy();
   }
-
-//   editArticle: function(){
-//     this.$('h1, p').each(function(){
-//       $(this).replaceWith($('<input class="' + $(this).attr('class') + '" value="' + $(this).text() + '" />'));
-//     });
-//     this.$('button.edit').text('Save').addClass('save').removeClass('edit');
-//   },
-//   saveArticle: function(){
-//     this.model.set({
-//       task: this.$('input.task').val()
-//     })
-//   }
 }); 
 

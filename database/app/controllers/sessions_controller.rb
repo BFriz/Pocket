@@ -3,6 +3,7 @@ class SessionsController < Devise::SessionsController
   include ActionController::ImplicitRender
 
   skip_before_filter :require_no_authentication, only: [:create]
+  # skip_before_filter :verify_authenticity_token
 
   def create
     # Allow users to reach this route even if they are not authenticated
