@@ -10,20 +10,21 @@ class ArticlesController < ApplicationController
   end
   def create
     # binding.pry
-
+    user_id = params[:current_user]
     article = Article.create(url: params[:url])
     article.scrapedata
-    
-
+    # binding.pry
     params[:categories].split(', ').each do |name|
       category = Category.create(name: name)
-      ArticleCategory.create(category_id: category.id, article_id: article.id)
+     # ArticleCategory.create(category_id: category.id, article_id: article.id)
     end
+    # binding.pry
+    UserArticle.create(user_id: user_id, article_id: Article.last.id)
 
-    UserArticle.create(user_id: current_user, article_id: article.id)
+    # render :json => article, :include => :current_user
 
-    render :json => article, :include => :categories
-    # render :json => articles, :include => :categories
+# **************NEED TO FIGURE OUT WHAT TO RENDER *******************
+    render :json => user.articles, :include => :categories
   end
   
   def destroy
@@ -31,9 +32,9 @@ class ArticlesController < ApplicationController
   end
 
   def user_articles
-
     user = User.find(params[:user]) 
     if user
+
       render :json => user.articles, :include => :categories
     else
       render :json => {status: :failure}

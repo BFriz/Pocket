@@ -21,7 +21,8 @@ class Article < ActiveRecord::Base
       image = doc.at('meta[property="og:image"]')['content']
       # site_name = doc.at('meta[property="og:site_name"]')['content']
 
-      Article.create(title: title, description: description, image: image)
+      Article.create(title: title, description: description, image: image, url: url)
+      # binding.pry
     # self.title = title
     # self.description = description
     # self.image = image
