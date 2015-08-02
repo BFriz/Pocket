@@ -24,19 +24,25 @@ PocketApp.Views.ProfileView = Backbone.View.extend({
     this.$el.find('#articleList').empty();    
     this.$el.find('#articleList').append(articlesHTML.$el);
   },
-  addArticle: function(url, category){
+  addArticle: function(url, category, currentUser){
     // Need to pass the url and categories so that the information is got by the article_view
-    var token = Cookies.get('authentication_token')
-    
-    var article = new PocketApp.Models.Article({url: url, categories: category});
-    this.collection.create(article);
+    self = this;
+    this.collection.fetch({
+      data: {user: PocketApp.currentUser.id}
+    }).done(function(){
+      console.log('data fetched in addArticle');
+
+    // var token = Cookies.get('authentication_token')
+    var article = new PocketApp.Models.Article({url: url, categories: category, current_user: currentUser});
+    self.collection.create(article);
+  });
   },
   createArticle: function(event){
     event.preventDefault();
-  
+    var currentUser = PocketApp.currentUser.id
     var url = this.$('#url-upload');
     var category = this.$('#category-upload');
-    this.addArticle(url.val(), category.val());
+    this.addArticle(url.val(), category.val(), currentUser);
     url.val('');
     category.val('');
   },
