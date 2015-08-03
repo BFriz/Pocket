@@ -6,13 +6,34 @@ PocketApp.AppRouter = Backbone.Router.extend({
   },
   index: function() {
     // debugger;
-    PocketApp.Views.HomeView = new PocketApp.Views.HomeView({collection: PocketApp.articles});
-    PocketApp.Views.HomeView.render();
+    var token = Cookies.get('authentication_token')
+
+    if (!!token) {
+    $.get('http://localhost:3000/users/' + token, function(response) {
+      PocketApp.currentUser = response;
+      var view = new PocketApp.Views.loggedInView();
+        view.render();
+      PocketApp.Views.HomeView = new PocketApp.Views.HomeView({collection: PocketApp.articles});
+      PocketApp.Views.HomeView.render();
+    });
+    } else {
+      $.get('http://localhost:3000/articles', function(response){
+        var view = new PocketApp.Views.loggedOutView();
+          
+
+        var HomeView = new PocketApp.Views.HomeView({collection: PocketApp.articles});
+      HomeView.render();
+
+
+      })
+
+      // view.render();
+      // debugger;
+    }
   },
   signIn: function() {
-    // debugger;
     var token = Cookies.get('authentication_token')
-    if (!token) {
+    if (!!token) {
       PocketApp.router.navigate('#profile', {trigger: true});
     } else {
       var loggedOutView = new PocketApp.Views.loggedOutView();

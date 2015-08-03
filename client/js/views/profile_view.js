@@ -11,8 +11,9 @@ PocketApp.Views.ProfileView = Backbone.View.extend({
       data: {user: PocketApp.currentUser.id}
     }).done(function(){
       console.log('data fetched');
+      self.$el.empty();
       self.template = _.template($('#profile_template').html() );
-      self.collection.bind('add remove', self.render, self);
+      self.collection.bind('add remove change', self.render, self);
       self.render();
     })
   },
