@@ -35,17 +35,18 @@ PocketApp.Views.loggedOutView = Backbone.View.extend({
         }
       }
     }).done(function (data) {
-      debugger; 
-      login();
-      PocketApp.router.navigate('/#profile', true);
-      PocketApp.Views.appview = new PocketApp.Views.appView();
-      PocketApp.Views.appview.render();
+      Cookies.set('authentication_token', data.authentication_token);
+      PocketApp.router.profile('#profile', {trigger: true})
+     
+
+      // PocketApp.router.navigate('/#profile', true);
+      // PocketApp.Views.appview = new PocketApp.Views.appView();
+      // PocketApp.Views.appview.render();
     }).fail(function(err) {
       alert(err.responseText)
     })
 
   },
-
   login: function (event) {
     var email = $('#email').val();
     var password = $('#password').val();
@@ -61,7 +62,6 @@ PocketApp.Views.loggedOutView = Backbone.View.extend({
       }
     //what to do on success
     }).done(function (data) {
-      debugger;
         console.log('logged in')
         PocketApp.currentUser = data;
         Cookies.set('authentication_token', data.authentication_token);

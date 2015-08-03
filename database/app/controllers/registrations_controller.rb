@@ -5,7 +5,7 @@ class RegistrationsController < Devise::RegistrationsController
    build_resource(sign_up_params)
    resource.save
     if resource.persisted?
-      render json: ["your account has been successfully created"]
+      render json: resource
     else
       render status: 422, json: resource.errors.full_messages
     end
