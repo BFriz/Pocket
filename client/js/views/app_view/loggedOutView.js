@@ -2,7 +2,6 @@ PocketApp.Views.loggedOutView = Backbone.View.extend({
   el: '#app',
 
   initialize: function () {
-    //unbind any existing event handlers
     $(this.el).undelegate('#login', 'click');
     
     this.template = _.template($('#loggedOutView').html() );
@@ -17,15 +16,12 @@ PocketApp.Views.loggedOutView = Backbone.View.extend({
     'submit form#signup': 'signup'
   },
   signup: function () {
-    event.preventDefault();
-    
     var email = $('#email-signup').val();
     var password = $('#password-signup').val();
     var password_confirmation = $('#password-confirmation-signup').val();
     
     console.log('email: ', email, 'password :', password, 'password-confirmation:', password_confirmation);
-    
-
+    event.preventDefault();
 
     $.ajax({
       type: 'POST',
@@ -39,24 +35,22 @@ PocketApp.Views.loggedOutView = Backbone.View.extend({
         }
       }
     }).done(function (data) {
-      PocketApp.router.navigate('/', true);
+      debugger; 
+      login();
+      PocketApp.router.navigate('/#profile', true);
       PocketApp.Views.appview = new PocketApp.Views.appView();
       PocketApp.Views.appview.render();
     }).fail(function(err) {
-      alert()
+      alert(err.responseText)
     })
-
 
   },
 
   login: function (event) {
     var email = $('#email').val();
     var password = $('#password').val();
-
     console.log('email: ', email, 'password :', password);
-
     event.preventDefault();
-
     var request = $.ajax({
       type: 'POST',
       dataType: 'json',
@@ -67,6 +61,7 @@ PocketApp.Views.loggedOutView = Backbone.View.extend({
       }
     //what to do on success
     }).done(function (data) {
+      debugger;
         console.log('logged in')
         PocketApp.currentUser = data;
         Cookies.set('authentication_token', data.authentication_token);

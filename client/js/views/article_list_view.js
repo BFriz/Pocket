@@ -2,17 +2,6 @@ PocketApp.Views.ArticleListView = Backbone.View.extend({
   tagName: 'div',
   id: 'article',
   initialize: function(){
-    // if (PocketApp.currentUser){
-    //   this.collection.fetch({
-    //     data: {user: PocketApp.currentUser.id}
-    //   }).done(function(){
-    //     console.log('success, usersartciles');
-    //   })
-    // } else {
-    //   this.collection.fetch().done(function(){
-    //     console.log('success');
-    //   })
-    // }
   },
   render: function(){
     var articleList = $('#articleList');

@@ -11,8 +11,8 @@ class ArticlesController < ApplicationController
   def create
     # binding.pry
     user_id = params[:current_user]
-    article = Article.create(url: params[:url])
-    article.scrapedata
+    article = Article.create(url: params[:url]).scrapedata
+    # article.scrapedata
     # binding.pry
     params[:categories].split(', ').each do |name|
       category = Category.create(name: name)
@@ -24,7 +24,8 @@ class ArticlesController < ApplicationController
     # render :json => article, :include => :current_user
 
 # **************NEED TO FIGURE OUT WHAT TO RENDER *******************
-    render :json => user.articles, :include => :categories
+# binding.pry
+    render :json => article, :include => :categories
   end
   
   def destroy

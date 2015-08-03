@@ -19,6 +19,7 @@ PocketApp.Views.ProfileView = Backbone.View.extend({
   render: function () {
     console.log('in the render profile')
     var articleListView = new PocketApp.Views.ArticleListView({ collection: this.collection});
+    // debugger;
     var articlesHTML = articleListView.render();
     this.$el.html(this.template());
     this.$el.find('#articleList').empty();    
@@ -31,11 +32,13 @@ PocketApp.Views.ProfileView = Backbone.View.extend({
       data: {user: PocketApp.currentUser.id}
     }).done(function(){
       console.log('data fetched in addArticle');
-
+      
     // var token = Cookies.get('authentication_token')
     var article = new PocketApp.Models.Article({url: url, categories: category, current_user: currentUser});
+  // *********************wait till article is created 
+  // debugger;
     self.collection.create(article);
-  });
+    });
   },
   createArticle: function(event){
     event.preventDefault();

@@ -5,12 +5,14 @@ PocketApp.AppRouter = Backbone.Router.extend({
     'users/sign_in' : 'signIn'
   },
   index: function() {
+    // debugger;
     PocketApp.Views.HomeView = new PocketApp.Views.HomeView({collection: PocketApp.articles});
     PocketApp.Views.HomeView.render();
   },
   signIn: function() {
+    // debugger;
     var token = Cookies.get('authentication_token')
-    if (!!token) {
+    if (!token) {
       PocketApp.router.navigate('#profile', {trigger: true});
     } else {
       var loggedOutView = new PocketApp.Views.loggedOutView();
